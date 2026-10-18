@@ -1,0 +1,30 @@
+{
+  "duration": 11.2,
+  "light_on_seconds": 9.366666666666667,
+  "completion_seconds": 10.333333333333334,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "speed": 1,
+  "success_verified": true,
+  "render_type": "1920x1080 native simulator replay, followed by presentation-only motion-compensated frame interpolation.",
+  "selected_episode_id": "m01_v1_00032",
+  "source_cut_intervals": [
+    {
+      "start_seconds": 3.0,
+      "end_seconds": 14.2,
+      "output_start_seconds": 0,
+      "output_end_seconds": 11.2,
+      "speed": 1
+    }
+  ],
+  "task_id": "m01",
+  "video": "assets/media/hero-smooth60.mp4",
+  "poster": "assets/media/hero-selected-unlit.jpg",
+  "mode": "scroll-controlled",
+  "autoplay": false,
+  "keyframe_interval": 3,
+  "editing": "Single contiguous 3.0-14.2s excerpt, with motion-compensated 30-to-60fps interpolation for the website intro. Original action timing, contact and light transition retained. Source recordings and evaluation data unchanged.",
+  "intro_video": "assets/media/hero-smooth60.mp4",
+  "source_fps": 30
+}

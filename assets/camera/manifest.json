@@ -1,0 +1,33 @@
+{
+  "source": "dex_benchmark/robots/assets/panda/realsense2_description/meshes/d435.dae",
+  "source_sha256": "42f3b66f47a1f8f425a2e4dc07c1d9c283183167d8441f520a15623d98f9bf78",
+  "sha256": "07dfdb42619af9a1565bdd56f9eb28f1002e6183ecfc95ea162f818464e6284a",
+  "source_bounds_m": [
+    [
+      -0.04491420090198517,
+      -0.012500000186264515,
+      -0.025054700672626495
+    ],
+    [
+      0.0450000986456871,
+      0.012500000186264515,
+      0.0
+    ]
+  ],
+  "export_bounds_m": [
+    [
+      -0.04494476807803956,
+      -0.012596388810058723,
+      -0.025053100660443306
+    ],
+    [
+      0.04444735236386017,
+      0.013090178283341296,
+      0.0
+    ]
+  ],
+  "original_triangles": 231186,
+  "export_triangles": 35017,
+  "conversion": "Web LOD derived from repository CAD; source coordinates in metres. Web materials and optical face details are illustrative.",
+  "usage": "Visual housing for virtual benchmark cameras; does not claim physical D435 deployment or calibrated D435 intrinsics."
+}

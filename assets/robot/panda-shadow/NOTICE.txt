@@ -1,0 +1,23 @@
+Evo-DexBench Panda + Shadow visualization
+
+Robot assembly, joint transforms, joint limits, and visual references are
+exported from dex_benchmark/robots/assets/panda_shadow/
+panda_shadow_distributed_tactile_123.urdf in the supplied Evo-DexBench repository.
+The default pose comes from robots/panda_shadow/panda_shadow.py.
+Manifest.json records source-relative paths and SHA256 values for each asset.
+The visual GLB files are copied without changes.
+
+Franka Panda meshes: Franka Emika / Franka Robotics; franka_description,
+via the Evo-DexBench asset tree. Apache License 2.0: LICENSE-Franka.txt.
+Upstream: https://github.com/frankarobotics/franka_ros
+
+Shadow Hand meshes: Copyright 2022 Shadow Robot Company Ltd.
+BSD license notice reproduced from the repository's original shadowhand.urdf
+in LICENSE-Shadow.txt.
+
+Evo-DexBench repository license: LICENSE-EvoDexBench.txt.
+Three.js and its GLTFLoader: MIT, ../../vendor/three-LICENSE.txt.
+
+The website renders URDF kinematics and actual visual meshes. The comparison
+scene and opening/closing motion illustrate the protocol; they do not execute
+the physics engine and are not evaluation rollouts.

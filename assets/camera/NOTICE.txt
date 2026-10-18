@@ -1,0 +1,19 @@
+Camera housing illustration
+
+The web camera shell is a simplified derivative of the D435 CAD mesh supplied
+in Evo-DexBench's realsense2_description package, version 2.2.17:
+dex_benchmark/robots/assets/panda/realsense2_description/meshes/d435.dae
+
+The source package identifies the Intel RealSense contributors and declares
+Apache License 2.0. See LICENSE-Apache-2.0.txt. Source package upstream:
+https://github.com/IntelRealSense/realsense-ros
+
+The website adds illustrative surface materials, optical-face details, bracket
+and support stand. Source geometry is simplified for web rendering and its
+vertex normals are rebuilt. SHA256 and conversion information are recorded in
+manifest.json; regenerate with scripts/export_camera_model.py (trimesh,
+pycollada and fast-simplification dependencies).
+
+The benchmark uses virtual camera configurations. This housing is a visual
+representation, not a claim that the dataset was collected with physical D435
+hardware or that its virtual camera uses calibrated D435 intrinsics.

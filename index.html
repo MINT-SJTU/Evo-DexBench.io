@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head><link rel="canonical" href="https://mint-sjtu.github.io/Evo-DexBench.io/"><meta property="og:url" content="https://mint-sjtu.github.io/Evo-DexBench.io/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Evo-DexBench benchmarks few-shot generalization across related dexterous manipulation tasks. 30 tasks, 6 functional families, and 1,248 multimodal demonstrations.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Evo-DexBench — From related tasks to new skills">
+  <meta property="og:description" content="Benchmarking Generalization across Related Tasks for Dexterous Manipulation">
+  <title>Evo-DexBench — Generalization across Related Tasks</title>
+  <link rel="icon" href="assets/brand-selected.png" type="image/png">
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="evidence.css?v=20261015-smooth1">
+  <link rel="stylesheet" href="publication.css?v=20261015-scroll360">
+  <link rel="stylesheet" href="refinement.css?v=20261018-public1">
+  <link rel="preload" href="assets/fonts/google-sans-flex-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="app.js?v=20261018-public1" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header over-hero">
+    <a class="wordmark" href="#" aria-label="Evo-DexBench home"><img class="brand-mark brand-selected" src="assets/brand-selected.png" alt="" width="44" height="48"><span>Evo-DexBench</span></a>
+    <nav id="main-navigation" aria-label="Main navigation"><a href="#hero-stage">Home</a><a href="#principle">Overview</a><a href="#tasks">Tasks</a><a href="#dataset">Dataset</a><a href="#evaluation">Protocol</a><a href="#results">Results</a></nav>
+    <div class="nav-actions"><a class="nav-code" href="https://github.com/MINT-SJTU/Evo-DexBench" target="_blank" rel="noopener">Code </a><a class="nav-resource" href="leaderboard.html">Leaderboard <span aria-hidden="true"></span></a><button class="nav-toggle" aria-label="Toggle navigation" aria-controls="main-navigation" aria-expanded="false"><span></span><span></span></button></div>
+  </header>
+  <main id="main">
+    <div class="intro-track" id="hero-stage"><div class="intro-pin">
+
+      <section id="demonstrations" class="hero" aria-label="Full-screen scroll-controlled lamp demonstration">
+        <div class="hero-film hero-fullscreen"><video id="hero-video" muted playsinline preload="auto" poster="assets/media/hero-selected-unlit.jpg" aria-label="Scroll to complete the lamp-button demonstration"></video></div>
+        <div class="hero-scrim"></div>
+        <div class="hero-intro-copy"><p>DEXTEROUS MANIPULATION · RELATED-TASK GENERALIZATION</p><h1>Evo-DexBench</h1><div>Learn related tasks. Transfer to a new one.</div></div>
+        <div class="hero-bottom wrap"><span class="hero-caption">30 tasks. Six functional families.</span><span class="scroll-cue">A short scroll turns on the light ↓</span></div>
+      </section>
+    </div></div>
+    <section class="authors research-reveal wrap" id="research" aria-label="Authors and affiliations">
+      <div class="research-title"><h2 id="hero-title">Benchmarking Generalization across Related Tasks<br>for Dexterous Manipulation</h2></div><div class="research-people"><p class="author-list"><span class="person">Bing Cheng<sup>1,*</sup></span> <span>·</span> <span class="person">Yiran Mao<sup>1,2,*</sup></span> <span>·</span> <span class="person">Zewei Ye<sup>1,*</sup></span> <span>·</span> <span class="person">Yifan Jin<sup>1,3</sup></span> <span>·</span> <span class="person">Xinyi Chen<sup>1</sup></span> <span>·</span> <span class="person">Ruifeng Tu<sup>1</sup></span> <span>·</span> <span class="person">Shuhuai Wang<sup>1,4</sup></span><br><span class="person">Tao Lin<sup>1</sup></span> <span>·</span> <span class="person">Zhimu Zhou<sup>1</sup></span> <span>·</span> <span class="person">Yuxin Du<sup>1</sup></span> <span>·</span> <span class="person">Fangwei Zhong<sup>5</sup></span> <span>·</span> <span class="person">Junchi Yan<sup>1</sup></span> <span>·</span> <span class="person">Bo Zhao<sup>1,†</sup></span></p>
+      <p class="affiliations"><span><sup>1</sup> School of AI, Shanghai Jiao Tong University</span><span><sup>2</sup> Nanjing University</span><span><sup>3</sup> Central South University</span><span><sup>4</sup> Beijing University of Posts and Telecommunications</span><span><sup>5</sup> Beijing Normal University</span></p><p class="contribution">* Equal contribution &nbsp; † Corresponding author</p><p class="contact-list">Contact: <a href="mailto:sjtu8620588@sjtu.edu.cn">sjtu8620588@sjtu.edu.cn</a><span>·</span><a href="mailto:bo.zhao@sjtu.edu.cn">bo.zhao@sjtu.edu.cn</a></p><div class="publication-links"><a href="https://arxiv.org/abs/2610.21180" target="_blank" rel="noopener"><svg class="link-icon" aria-hidden="true"><use href="assets/icons.svg#paper"/></svg> Paper <small>arXiv</small></a><a href="https://github.com/MINT-SJTU/Evo-DexBench" target="_blank" rel="noopener"><svg class="link-icon" aria-hidden="true"><use href="assets/icons.svg#code"/></svg> Code</a><a href="https://huggingface.co/collections/MINT-SJTU/evo-dexbench" target="_blank" rel="noopener"><svg class="link-icon" aria-hidden="true"><use href="assets/icons.svg#data"/></svg> Dataset</a><a href="#results"><svg class="link-icon" aria-hidden="true"><use href="assets/icons.svg#results"/></svg> Results</a></div>
+</div>
+    </section>
+    <section id="task-gallery" class="task-wall section" aria-labelledby="task-gallery-title">
+      <div class="task-wall-heading wrap"><span class="panel-kicker">THE BENCHMARK IN MOTION</span><h2 id="task-gallery-title">Dexterous manipulation, across 30 tasks.</h2><p>Six functional families. Single-hand and bimanual manipulation.</p></div>
+      <div class="task-wall-rows"></div>
+      <div class="task-wall-footer wrap"><p>Hover to hold a row. Select a task to watch in full.</p><div><a href="#tasks">Explore the task families <span aria-hidden="true"></span></a></div></div>
+    </section>
+    <section class="stats wrap" aria-label="Benchmark at a glance"><div><strong>30</strong><span>dexterous tasks</span></div><div><strong>6</strong><span>functional families</span></div><div><strong>1,248</strong><span>multimodal demonstrations</span></div><div><strong>123</strong><span>taxels per hand</span></div></section>
+    <section id="principle" class="section wrap">
+      <div class="section-label"><span>01 / BENCHMARK DESIGN</span><span>RELATED TASK GENERALIZATION</span></div>
+      <div class="section-intro"><h2>Core–Gen protocol</h2><p>Pressing a lamp button and pressing a display button are different tasks with a shared functional interaction. Core–Gen asks whether a policy can learn that relation—and use it with just a few target demonstrations.</p></div>
+      <div class="comparison-panel" id="core-comparison">
+        <div class="comparison-top"><div><span class="panel-kicker">CHANGE THE SOURCE, KEEP THE TARGET</span><h3>Which experience is relevant?</h3></div><div class="segmented" role="group" aria-label="Source task relatedness"><button data-relatedness="matched" aria-pressed="true">Related Core</button><button data-relatedness="different" aria-pressed="false">Different family</button></div></div>
+        <div class="comparison-films"><figure><div class="comparison-media"><img id="source-poster" src="assets/media/hero-selected-unlit.jpg" alt="Lamp button source task"><video id="source-demo" muted loop playsinline preload="none" aria-label="Source task demonstration"></video><span class="film-role">CORE / SOURCE</span></div><figcaption><div><strong id="source-name">Lamp button</strong><span id="source-family">Button-driven interaction</span></div><span class="demo-budget">50 <small>demos / task</small></span></figcaption></figure><div class="comparison-arrow" aria-hidden="true">→</div><figure><div class="comparison-media"><img src="assets/media/showcase/m05.jpg" alt="Display power button target task"><video id="target-demo" muted loop playsinline preload="none" aria-label="Gen target demonstration"></video><span class="film-role target">GEN / TARGET</span></div><figcaption><div><strong>Display power button</strong><span>Held-out target within the button family</span></div><span class="demo-budget accent">8 <small>target demos</small></span></figcaption></figure></div>
+        <div class="comparison-bottom"><p id="relatedness-note">Both tasks displace a localized control to change device state. Four Core tasks provide different instances of this interaction.</p></div>
+        <p class="panel-footnote">Representative task demonstrations illustrate source relatedness. Experimental outcomes are reported in the results below.</p>
+      </div>
+      <div class="principle-notes"><p><span>01</span><strong>Control relatedness.</strong> Compare functionally matched and mismatched source tasks.</p><p><span>02</span><strong>Limit target exposure.</strong> Keep the target task few-shot with eight demonstrations.</p><p><span>03</span><strong>Measure transfer.</strong> Evaluate task success and meaningful partial progress.</p></div>
+    </section>
+    <section id="tasks" class="task-section section">
+      <div class="wrap"><div class="section-label"><span>02 / TASKS</span><span>24 CORE + 6 GEN</span></div><div class="section-intro"><h2>Task families</h2><p>From a single fingertip press to coordinated two-hand assembly. Select a family. Hover to watch four related Core tasks and their few-shot Gen target. Click any task to explore its scene layouts.</p></div>
+      <div id="family-tabs" class="family-tabs" role="group" aria-label="Choose a task family"></div>
+      <div class="atlas" id="atlas"><div class="atlas-heading"><div><span id="family-setup" class="eyebrow"></span><h3 id="family-title"></h3><p id="family-description"></p></div><span class="atlas-counter" id="family-counter"></span></div><div class="atlas-content"><div class="task-list" id="task-list" role="group" aria-label="Choose a task"></div></div></div></div></section>
+    <dialog id="task-dialog" class="task-dialog" aria-label="Task detail"><button id="close-task" class="dialog-close" aria-label="Close task detail">×</button><h3 id="dialog-title"></h3><div class="task-detail"><div class="task-view"><video id="task-video" controls muted loop playsinline preload="none" width="1280" height="720"></video><span id="task-media-status" class="task-media-status" role="status" hidden></span><span class="view-label" id="view-label">SCENE LAYOUT / 01</span></div><div class="task-detail-bar"><p id="task-instruction"></p><div class="layout-controls" role="group" aria-label="Scene layout"><button data-layout="0" aria-pressed="true">L1</button><button data-layout="1" aria-pressed="false">L2</button><button data-layout="2" aria-pressed="false">L3</button></div></div><p id="task-source-note" class="task-source-note" hidden></p></div></dialog>
+
+    <section id="dataset" class="section wrap">
+      <div class="section-label"><span>03 / THE DATASET</span><span>MULTIMODAL DATA</span></div><div class="section-intro"><h2>Multimodal demonstrations</h2><p>Collected with Quest 3 VR teleoperation, the benchmark pairs visual context with hand configuration, tactile feedback, and actions. Every task spans three scene layouts.</p></div>
+      <div class="dataset-console" id="dataset-console">
+        <div class="console-heading"><div><span class="panel-kicker">ONE EPISODE, TIME-ALIGNED OBSERVATIONS</span><h3>Synchronized observations</h3></div><span class="recording-tag">HD SIMULATION REPLAY</span></div>
+        <div class="camera-grid" id="camera-grid"></div>
+        <div class="sync-controls"><button id="dataset-play" class="round-control" aria-label="Play synchronized observations" disabled>▶</button><label class="sr-only" for="dataset-seek">Recorded episode time</label><input id="dataset-seek" type="range" min="0" max="1000" value="0" disabled><output id="dataset-time">0.0 s</output><button id="dataset-contact" class="text-link" disabled>Jump to contact </button></div>
+        <div class="sensor-grid"><div class="taxel-panel"><div class="sensor-heading"><h4>123 tactile channels</h4><span id="taxel-sample-time">10 Hz retained samples</span></div><svg id="taxel-grid" viewBox="0 0 492 48" role="img" aria-label="Recorded tactile force by channel index"></svg><div class="sensor-legend"><span>Channel index 0–122</span><span><i></i>0 <b></b>24 N</span></div><p>Channel order, not a spatial map of the hand.</p></div><div class="force-panel"><div class="sensor-heading"><h4>Maximum taxel force</h4><span><strong id="current-force">0.00</strong> N</span></div><svg id="force-trace" viewBox="0 0 500 92" role="img" aria-label="Recorded maximum taxel force over the episode"></svg><div class="sensor-legend"><span>Full 30 Hz frame trace</span><span id="recorded-peak"></span></div></div></div>
+        <p id="dataset-note" class="panel-footnote">Three widescreen camera views and tactile measurements are captured together during a simulation replay.</p>
+      </div>
+      <div class="dataset-specs"><div><span>COLLECT</span><h3>Quest 3 teleoperation</h3><p>Wrist motion and hand tracking control the simulated arm and Shadow Hand.</p></div><div><span>RECORD</span><h3>Vision, touch and state</h3><p>Multi-view images accompany distributed contact forces, proprioception and actions.</p></div><div><span>TRAIN</span><h3>HDF5 + LeRobot-v3</h3><p>A multimodal source format and a training-oriented dataset export.</p></div></div>
+      <div class="dataset-equation"><span><strong>24</strong> Core tasks <small>× 50 demos</small></span><b>+</b><span><strong>6</strong> Gen tasks <small>× 8 demos</small></span><b>=</b><span class="equation-total"><strong>1,248</strong> demonstrations</span></div>
+    </section>
+    <section id="evaluation" class="protocol-section section"><div class="wrap"><div class="section-label"><span>04 / EVALUATION</span><span>FIVE CONDITIONS</span></div><div class="section-intro"><h2>Evaluation protocol</h2><p>Task success and stage progress are evaluated under the nominal setup and four perturbation axes. Each result retains its training setting and evaluation protocol.</p></div><div class="evaluation-panel"><div class="condition-selector" id="condition-selector" role="group" aria-label="Evaluation condition"></div><div class="schedule-panel"><div class="schedule-heading"><strong id="condition-title">Nominal</strong><span>20 / 100 episodes</span></div><p id="condition-description"></p><div class="episode-dots" id="episode-dots" aria-label="Illustration of five groups of twenty evaluation episodes"></div><div class="schedule-meta"><span>5 seeds</span><span>3 layouts</span><span>100 episodes</span></div><p class="panel-footnote">Standard reference schedule, illustrated here as episode groups. Dots do not encode outcomes.</p></div></div></div></section>
+    <section id="results" class="section wrap">
+      <div class="section-label"><span>05 / RESULTS</span><span class="progress-label"><span class="live-dot"></span> 15 EVALUATED TASKS</span></div><div class="section-intro"><h2>Evaluation results</h2><p>Compare models first, then inspect individual tasks and Core–Gen training settings. Total success rate is shown by default; select a condition to see its breakdown.</p></div>
+      <div id="model-overview" class="model-overview"></div>
+      <div class="results-detail-heading"><h3>Explore each model</h3><p>Total success rate across the five evaluation conditions.</p></div>
+      <div class="result-modes" role="group" aria-label="Experiment view"><button data-mode="baseline" aria-pressed="true">Policy evaluation</button><button data-mode="transfer" aria-pressed="false">Core + Gen</button></div>
+      <div class="result-controls" id="result-controls"></div><p id="result-context" class="result-context"></p><div id="transfer-heatmap" class="transfer-heatmap" hidden></div><div class="results-visual"><div class="plot-heading"><div><h3 id="result-plot-title">Task success rate</h3><p id="result-coverage"></p></div><div class="segmented" role="group" aria-label="Chart metric"><button data-plot-metric="0" aria-pressed="true">Success rate</button><button data-plot-metric="1" aria-pressed="false">Stage score</button></div></div><div id="result-plot" class="result-plot" role="img" aria-label="Selected experimental results"></div></div><a class="leaderboard-link" href="leaderboard.html">Visit the community leaderboard <span></span></a>
+    </section>
+    <section id="resources" class="section resources"><div class="wrap"><div class="section-label"><span>06 / BUILD ON EVO-DEXBENCH</span><span>RESOURCES</span></div><h2>Paper, code & data</h2><div class="resource-grid"><a class="resource-item" href="https://arxiv.org/abs/2610.21180" target="_blank" rel="noopener"><div class="resource-top"><svg class="resource-icon" aria-hidden="true"><use href="assets/icons.svg#paper"/></svg><span class="resource-arrow" aria-hidden="true"></span></div><span class="resource-category">01 / READ</span><h3>The paper</h3><p>Benchmark design, task specifications, and experimental analysis.</p><span class="resource-path">arXiv:2610.21180</span></a><a class="resource-item" href="https://github.com/MINT-SJTU/Evo-DexBench" target="_blank" rel="noopener"><div class="resource-top"><svg class="resource-icon" aria-hidden="true"><use href="assets/icons.svg#code"/></svg><span class="resource-arrow" aria-hidden="true"></span></div><span class="resource-category">02 / BUILD</span><h3>The benchmark</h3><p>Environment, task definitions, and evaluation tools.</p><span class="resource-path">GitHub / MINT-SJTU</span></a><a class="resource-item" href="https://huggingface.co/collections/MINT-SJTU/evo-dexbench" target="_blank" rel="noopener"><div class="resource-top"><svg class="resource-icon" aria-hidden="true"><use href="assets/icons.svg#data"/></svg><span class="resource-arrow" aria-hidden="true"></span></div><span class="resource-category">03 / TRAIN</span><h3>The dataset</h3><p>Multimodal demonstrations for Core–Gen policy learning.</p><span class="resource-path">Hugging Face / MINT-SJTU</span></a></div><p class="release-note">Code and dataset links point to the release destinations listed in the manuscript. Availability follows the project release.</p>
+      <details class="citation" open><summary>Cite Evo-DexBench <span aria-hidden="true">+</span></summary><div class="citation-toolbar"><p>arXiv preprint · 2026</p><button id="copy-citation" class="text-link"><svg class="link-icon" aria-hidden="true"><use href="assets/icons.svg#copy"/></svg>Copy BibTeX</button></div><pre id="bibtex">@misc{cheng2026evodexbench,
+  title = {Evo-DexBench: Benchmarking Generalization across Related Tasks for Dexterous Manipulation},
+  author = {Cheng, Bing and Mao, Yiran and Ye, Zewei and Jin, Yifan and Chen, Xinyi and Tu, Ruifeng and Wang, Shuhuai and Lin, Tao and Zhou, Zhimu and Du, Yuxin and Zhong, Fangwei and Yan, Junchi and Zhao, Bo},
+  year = {2026},
+  eprint = {2610.21180},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO},
+  url = {https://arxiv.org/abs/2610.21180}
+}</pre></details></div></section>
+  </main>
+  <footer class="project-footer">
+    <div class="wrap">
+      <div class="footer-columns">
+        <div class="footer-about"><a class="footer-brand" href="#hero-stage"><img src="assets/brand-selected.png" alt="" width="38" height="44"><strong>Evo-DexBench</strong></a><p>Benchmarking generalization across related tasks for dexterous manipulation.</p></div>
+        <div class="footer-column"><h2>Explore</h2><ul><li><a href="#hero-stage">Home</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#evaluation">Evaluation</a></li><li><a href="leaderboard.html">Leaderboard</a></li></ul></div>
+        <div class="footer-column"><h2>Resources</h2><ul><li><a href="https://arxiv.org/abs/2610.21180" target="_blank" rel="noopener">Paper</a></li><li><a href="https://github.com/MINT-SJTU/Evo-DexBench" target="_blank" rel="noopener">MINT-SJTU / Evo-DexBench</a></li><li><a href="https://huggingface.co/collections/MINT-SJTU/evo-dexbench" target="_blank" rel="noopener">Dataset on Hugging Face</a></li><li><a href="#resources">Citation</a></li></ul></div>
+        <div class="footer-column footer-contact"><h2>Contact</h2><a href="mailto:sjtu8620588@sjtu.edu.cn">sjtu8620588@sjtu.edu.cn</a></div>
+      </div>
+      <div class="footer-bottom"><div><p class="visitor-stat" title="Estimated unique visitors reported by Busuanzi"><span id="busuanzi_value_site_uv">—</span> <span class="visitor-count-label">visitors</span></p><p>© 2026 Evo-DexBench</p></div><a href="#hero-stage">Back to top ↑</a></div>
+    </div>
+  </footer>
+  <div id="toast" class="toast" role="status"></div>
+  <noscript><p class="noscript">Enable JavaScript to explore task families and experimental results. The benchmark overview remains available above.</p></noscript>
+  <script type="module" src="visitor-count.js?v=20261018-public1"></script>
+</body>
+</html>

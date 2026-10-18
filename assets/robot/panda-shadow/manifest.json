@@ -1,0 +1,2216 @@
+{
+  "name": "panda_shadow_distributed_tactile_123",
+  "units": "metres",
+  "coordinate_system": "URDF Z-up",
+  "root": "panda_link0",
+  "links": [
+    {
+      "name": "panda_link0",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "rpy": [
+              0,
+              0,
+              0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/link0.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "panda_link1",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "rpy": [
+              0,
+              0,
+              0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/link1.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "panda_link2",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "rpy": [
+              0,
+              0,
+              0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/link2.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "panda_link3",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "rpy": [
+              0,
+              0,
+              0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/link3.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "panda_link4",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "rpy": [
+              0,
+              0,
+              0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/link4.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "panda_link5",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "rpy": [
+              0,
+              0,
+              0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/link5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "panda_link6",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "rpy": [
+              0,
+              0,
+              0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/link6.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "panda_link7",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "rpy": [
+              0,
+              0,
+              0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/link7.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "panda_link8",
+      "visuals": []
+    },
+    {
+      "name": "panda_hand",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "rpy": [
+              0,
+              0,
+              0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/hand.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.1
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "cylinder",
+          "radius": 0.008,
+          "length": 0.1
+        }
+      ]
+    },
+    {
+      "name": "panda_hand_tcp",
+      "visuals": []
+    },
+    {
+      "name": "rh_forearm",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.006
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/forearm_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_wrist",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/wrist_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_palm",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/palm_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_manipulator",
+      "visuals": []
+    },
+    {
+      "name": "rh_imu",
+      "visuals": []
+    },
+    {
+      "name": "rh_ffknuckle",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0005
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_knuckle_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_ffproximal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_proximal_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_ffmiddle",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_middle_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_ffdistal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_distal_pst.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_fftip",
+      "visuals": []
+    },
+    {
+      "name": "rh_mfknuckle",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0005
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_knuckle_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_mfproximal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_proximal_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_mfmiddle",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_middle_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_mfdistal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_distal_pst.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_mftip",
+      "visuals": []
+    },
+    {
+      "name": "rh_rfknuckle",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0005
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_knuckle_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_rfproximal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_proximal_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_rfmiddle",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_middle_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_rfdistal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_distal_pst.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_rftip",
+      "visuals": []
+    },
+    {
+      "name": "rh_lfmetacarpal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.9599,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/lf_metacarpal_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_lfknuckle",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0005
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_knuckle_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_lfproximal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_proximal_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_lfmiddle",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_middle_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_lfdistal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/f_distal_pst.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_lftip",
+      "visuals": []
+    },
+    {
+      "name": "rh_thbase",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "box",
+          "size": [
+            0.001,
+            0.001,
+            0.001
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_thproximal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/th_proximal_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_thhub",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "box",
+          "size": [
+            0.001,
+            0.001,
+            0.001
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_thmiddle",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/th_middle_E3M5.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_thdistal",
+      "visuals": [
+        {
+          "origin": {
+            "xyz": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rpy": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "type": "mesh",
+          "file": "assets/robot/panda-shadow/th_distal_pst.glb",
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rh_thtip",
+      "visuals": []
+    }
+  ],
+  "joints": [
+    {
+      "name": "panda_joint1",
+      "type": "revolute",
+      "parent": "panda_link0",
+      "child": "panda_link1",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.333
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 87.0,
+        "lower": -2.8973,
+        "upper": 2.8973,
+        "velocity": 2.175
+      }
+    },
+    {
+      "name": "panda_joint2",
+      "type": "revolute",
+      "parent": "panda_link1",
+      "child": "panda_link2",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          -1.5707963267948966,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 87.0,
+        "lower": -1.7628,
+        "upper": 1.7628,
+        "velocity": 2.175
+      }
+    },
+    {
+      "name": "panda_joint3",
+      "type": "revolute",
+      "parent": "panda_link2",
+      "child": "panda_link3",
+      "origin": {
+        "xyz": [
+          0.0,
+          -0.316,
+          0.0
+        ],
+        "rpy": [
+          1.5707963267948966,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 87.0,
+        "lower": -2.8973,
+        "upper": 2.8973,
+        "velocity": 2.175
+      }
+    },
+    {
+      "name": "panda_joint4",
+      "type": "revolute",
+      "parent": "panda_link3",
+      "child": "panda_link4",
+      "origin": {
+        "xyz": [
+          0.0825,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          1.5707963267948966,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 87.0,
+        "lower": -3.0718,
+        "upper": -0.0698,
+        "velocity": 2.175
+      }
+    },
+    {
+      "name": "panda_joint5",
+      "type": "revolute",
+      "parent": "panda_link4",
+      "child": "panda_link5",
+      "origin": {
+        "xyz": [
+          -0.0825,
+          0.384,
+          0.0
+        ],
+        "rpy": [
+          1.5707963267948966,
+          -0.24459265358979343,
+          -3.141592653589793
+        ]
+      },
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 12.0,
+        "lower": -2.8973,
+        "upper": 2.8973,
+        "velocity": 2.61
+      }
+    },
+    {
+      "name": "panda_joint6",
+      "type": "revolute",
+      "parent": "panda_link5",
+      "child": "panda_link6",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          1.5707963267948966,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 12.0,
+        "lower": -0.0175,
+        "upper": 3.7525,
+        "velocity": 2.61
+      }
+    },
+    {
+      "name": "panda_joint7",
+      "type": "revolute",
+      "parent": "panda_link6",
+      "child": "panda_link7",
+      "origin": {
+        "xyz": [
+          0.088,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          1.5707963267948966,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 12.0,
+        "lower": -2.8973,
+        "upper": 2.8973,
+        "velocity": 2.61
+      }
+    },
+    {
+      "name": "panda_joint8",
+      "type": "fixed",
+      "parent": "panda_link7",
+      "child": "panda_link8",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.107
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "panda_hand_joint",
+      "type": "fixed",
+      "parent": "panda_link8",
+      "child": "panda_hand",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          -0.785398163397
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "panda_hand_tcp_joint",
+      "type": "fixed",
+      "parent": "panda_hand",
+      "child": "panda_hand_tcp",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.15
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rh_WRJ2",
+      "type": "revolute",
+      "parent": "rh_forearm",
+      "child": "rh_wrist",
+      "origin": {
+        "xyz": [
+          0.0,
+          -0.01,
+          0.21301
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 10.0,
+        "lower": -0.5235987755982988,
+        "upper": 0.17453292519943295,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_ee_fixed_joint",
+      "type": "fixed",
+      "parent": "rh_palm",
+      "child": "rh_manipulator",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.05
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rh_WRJ1",
+      "type": "revolute",
+      "parent": "rh_wrist",
+      "child": "rh_palm",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.034
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 30.0,
+        "lower": -0.6981317007977318,
+        "upper": 0.4886921905584123,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_palm_to_imu",
+      "type": "fixed",
+      "parent": "rh_palm",
+      "child": "rh_imu",
+      "origin": {
+        "xyz": [
+          0.01785,
+          0.00765,
+          0.049125
+        ],
+        "rpy": [
+          -1.5707963,
+          3.141592,
+          0.0
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rh_FFJ4",
+      "type": "revolute",
+      "parent": "rh_palm",
+      "child": "rh_ffknuckle",
+      "origin": {
+        "xyz": [
+          0.033,
+          0.0,
+          0.095
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": -0.3490658503988659,
+        "upper": 0.3490658503988659,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_FFJ3",
+      "type": "revolute",
+      "parent": "rh_ffknuckle",
+      "child": "rh_ffproximal",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": -0.2617993877991494,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_FFJ2",
+      "type": "revolute",
+      "parent": "rh_ffproximal",
+      "child": "rh_ffmiddle",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.045
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": 0.0,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_FFJ1",
+      "type": "revolute",
+      "parent": "rh_ffmiddle",
+      "child": "rh_ffdistal",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.025
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": 0.0,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_FFtip",
+      "type": "fixed",
+      "parent": "rh_ffdistal",
+      "child": "rh_fftip",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.026
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rh_MFJ4",
+      "type": "revolute",
+      "parent": "rh_palm",
+      "child": "rh_mfknuckle",
+      "origin": {
+        "xyz": [
+          0.011,
+          0.0,
+          0.099
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": -0.3490658503988659,
+        "upper": 0.3490658503988659,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_MFJ3",
+      "type": "revolute",
+      "parent": "rh_mfknuckle",
+      "child": "rh_mfproximal",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": -0.2617993877991494,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_MFJ2",
+      "type": "revolute",
+      "parent": "rh_mfproximal",
+      "child": "rh_mfmiddle",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.045
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": 0.0,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_MFJ1",
+      "type": "revolute",
+      "parent": "rh_mfmiddle",
+      "child": "rh_mfdistal",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.025
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": 0.0,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_MFtip",
+      "type": "fixed",
+      "parent": "rh_mfdistal",
+      "child": "rh_mftip",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.026
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rh_RFJ4",
+      "type": "revolute",
+      "parent": "rh_palm",
+      "child": "rh_rfknuckle",
+      "origin": {
+        "xyz": [
+          -0.011,
+          0.0,
+          0.095
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": -0.3490658503988659,
+        "upper": 0.3490658503988659,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_RFJ3",
+      "type": "revolute",
+      "parent": "rh_rfknuckle",
+      "child": "rh_rfproximal",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": -0.2617993877991494,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_RFJ2",
+      "type": "revolute",
+      "parent": "rh_rfproximal",
+      "child": "rh_rfmiddle",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.045
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": 0.0,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_RFJ1",
+      "type": "revolute",
+      "parent": "rh_rfmiddle",
+      "child": "rh_rfdistal",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.025
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": 0.0,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_RFtip",
+      "type": "fixed",
+      "parent": "rh_rfdistal",
+      "child": "rh_rftip",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.026
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rh_LFJ5",
+      "type": "revolute",
+      "parent": "rh_palm",
+      "child": "rh_lfmetacarpal",
+      "origin": {
+        "xyz": [
+          -0.033,
+          0.0,
+          0.02071
+        ],
+        "rpy": [
+          0.0,
+          -0.9599,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": 0.0,
+        "upper": 0.7853981633974483,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_LFJ4",
+      "type": "revolute",
+      "parent": "rh_lfmetacarpal",
+      "child": "rh_lfknuckle",
+      "origin": {
+        "xyz": [
+          0.05397275,
+          0.0,
+          0.03779463
+        ],
+        "rpy": [
+          0.0,
+          0.9599,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": -0.3490658503988659,
+        "upper": 0.3490658503988659,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_LFJ3",
+      "type": "revolute",
+      "parent": "rh_lfknuckle",
+      "child": "rh_lfproximal",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": -0.2617993877991494,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_LFJ2",
+      "type": "revolute",
+      "parent": "rh_lfproximal",
+      "child": "rh_lfmiddle",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.045
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": 0.0,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_LFJ1",
+      "type": "revolute",
+      "parent": "rh_lfmiddle",
+      "child": "rh_lfdistal",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.025
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": 0.0,
+        "upper": 1.5707963267948966,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_LFtip",
+      "type": "fixed",
+      "parent": "rh_lfdistal",
+      "child": "rh_lftip",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.026
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rh_THJ5",
+      "type": "revolute",
+      "parent": "rh_palm",
+      "child": "rh_thbase",
+      "origin": {
+        "xyz": [
+          0.034,
+          -0.00858,
+          0.029
+        ],
+        "rpy": [
+          -0.7853981633974483,
+          0.0,
+          -1.5707963267948966
+        ]
+      },
+      "axis": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "limit": {
+        "effort": 5.0,
+        "lower": -1.0471975511965976,
+        "upper": 1.0471975511965976,
+        "velocity": 4.0
+      }
+    },
+    {
+      "name": "rh_THJ4",
+      "type": "revolute",
+      "parent": "rh_thbase",
+      "child": "rh_thproximal",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 3.0,
+        "lower": 0.0,
+        "upper": 1.2217304763960306,
+        "velocity": 4.0
+      }
+    },
+    {
+      "name": "rh_THJ3",
+      "type": "revolute",
+      "parent": "rh_thproximal",
+      "child": "rh_thhub",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.038
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": -0.20943951023931953,
+        "upper": 0.20943951023931953,
+        "velocity": 4.0
+      }
+    },
+    {
+      "name": "rh_THJ2",
+      "type": "revolute",
+      "parent": "rh_thhub",
+      "child": "rh_thmiddle",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 2.0,
+        "lower": -0.6981317007977318,
+        "upper": 0.6981317007977318,
+        "velocity": 2.0
+      }
+    },
+    {
+      "name": "rh_THJ1",
+      "type": "revolute",
+      "parent": "rh_thmiddle",
+      "child": "rh_thdistal",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.032
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 1.0,
+        "lower": -0.2617993877991494,
+        "upper": 1.5707963267948966,
+        "velocity": 4.0
+      }
+    },
+    {
+      "name": "rh_thtip",
+      "type": "fixed",
+      "parent": "rh_thdistal",
+      "child": "rh_thtip",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0275
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "panda_hand_to_rh_forearm",
+      "type": "fixed",
+      "parent": "panda_hand",
+      "child": "rh_forearm",
+      "origin": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "rest": {
+    "panda_joint1": 0.0,
+    "panda_joint2": -0.282,
+    "panda_joint3": 0.172,
+    "panda_joint4": -2.726,
+    "panda_joint5": 0.0,
+    "panda_joint6": 2.216,
+    "panda_joint7": 2.194,
+    "rh_WRJ2": 0.0,
+    "rh_WRJ1": 0.0,
+    "rh_FFJ4": 0.0,
+    "rh_FFJ3": 0.0,
+    "rh_FFJ2": 0.0,
+    "rh_FFJ1": 0.0,
+    "rh_MFJ4": 0.0,
+    "rh_MFJ3": 0.0,
+    "rh_MFJ2": 0.0,
+    "rh_MFJ1": 0.0,
+    "rh_RFJ4": 0.0,
+    "rh_RFJ3": 0.0,
+    "rh_RFJ2": 0.0,
+    "rh_RFJ1": 0.0,
+    "rh_LFJ5": 0.0,
+    "rh_LFJ4": 0.0,
+    "rh_LFJ3": 0.0,
+    "rh_LFJ2": 0.0,
+    "rh_LFJ1": 0.0,
+    "rh_THJ5": 0.0,
+    "rh_THJ4": 0.0,
+    "rh_THJ3": 0.0,
+    "rh_THJ2": 0.0,
+    "rh_THJ1": 0.0
+  },
+  "source_urdf": "dex_benchmark/robots/assets/panda_shadow/panda_shadow_distributed_tactile_123.urdf",
+  "urdf_sha256": "cafaaf312ebc119a1e9ccea78c6f547a223729f48a77ddf00edef0d8a128be0b",
+  "source_agent": "dex_benchmark/robots/panda_shadow/panda_shadow.py",
+  "agent_sha256": "5f63fdc8ba97b1389bbfb202a2f0b3e25b6883896ae8f4474f6608fe725f33d7",
+  "assets": {
+    "link0.glb": {
+      "source": "dex_benchmark/robots/assets/panda/franka_description/meshes/visual/link0.glb",
+      "sha256": "672626c2bbf38cd2ea28837e5dafdc2f264959761200177e9e256d532b9be4f9"
+    },
+    "link1.glb": {
+      "source": "dex_benchmark/robots/assets/panda/franka_description/meshes/visual/link1.glb",
+      "sha256": "8376fac9a80cd04767a3749a723a68809c5b85fe34110f056e83b9c984c1f052"
+    },
+    "link2.glb": {
+      "source": "dex_benchmark/robots/assets/panda/franka_description/meshes/visual/link2.glb",
+      "sha256": "bbab9909c2b0572d256cd60e6a9c1b63ca9b55047ac3da7124a99b8b1fe6b8fc"
+    },
+    "link3.glb": {
+      "source": "dex_benchmark/robots/assets/panda/franka_description/meshes/visual/link3.glb",
+      "sha256": "f904d2d91255086a5706ca9c039cac62de4b7877b4a91b8ef387f461b9fa915b"
+    },
+    "link4.glb": {
+      "source": "dex_benchmark/robots/assets/panda/franka_description/meshes/visual/link4.glb",
+      "sha256": "3e301a20f05f81d007741c2f8e199452a705ec4a489b729ff389ef14769c2283"
+    },
+    "link5.glb": {
+      "source": "dex_benchmark/robots/assets/panda/franka_description/meshes/visual/link5.glb",
+      "sha256": "80d620e7d92b38a90a9ff2536e2d278cf2d0fa665f6bf4982e7069589b5cbb02"
+    },
+    "link6.glb": {
+      "source": "dex_benchmark/robots/assets/panda/franka_description/meshes/visual/link6.glb",
+      "sha256": "20f04024218fdafdf41926143e9038b970e27f0c84f574d34c2dd05df6a7a74f"
+    },
+    "link7.glb": {
+      "source": "dex_benchmark/robots/assets/panda/franka_description/meshes/visual/link7.glb",
+      "sha256": "a207703b9d6d28c186949619e5c424072ee8331b8d51d6256ace975816a94a15"
+    },
+    "hand.glb": {
+      "source": "dex_benchmark/robots/assets/panda/franka_description/meshes/visual/hand.glb",
+      "sha256": "3c2de5514714f7f8232a51b008eadb2eb421d290bfdc7341e5a12887cb70b661"
+    },
+    "forearm_E3M5.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/forearm/forearm_E3M5.glb",
+      "sha256": "0599dd0c6b99701a7c6564be5dbf779b866dc31259edc186e48bb71d58026016"
+    },
+    "wrist_E3M5.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/wrist/wrist_E3M5.glb",
+      "sha256": "6991a02f59bb5feb53cc72af512ddf136c06ce49aa023f8872bb2e27890f51fe"
+    },
+    "palm_E3M5.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/palm/palm_E3M5.glb",
+      "sha256": "d44b525a27f980313eb798f8963fbe019834d12ac2784ab93b3beb8a1198e12e"
+    },
+    "f_knuckle_E3M5.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/f_knuckle/f_knuckle_E3M5.glb",
+      "sha256": "df79d895b29418c42f6efb020644e01a130220f7bc2346cb1b10721ae9ee3bfe"
+    },
+    "f_proximal_E3M5.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/f_proximal/f_proximal_E3M5.glb",
+      "sha256": "c62503a3465b15e77da51fcdf581db3418256cee3adf1b8c3a804c047dff9da5"
+    },
+    "f_middle_E3M5.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/f_middle/f_middle_E3M5.glb",
+      "sha256": "4cfb1976d219d6ac8bbdca07f4446d57d8bddbc55d917f32118bfb8209dbc57f"
+    },
+    "f_distal_pst.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/f_distal/pst/f_distal_pst.glb",
+      "sha256": "223dbe9412cbc0a3398340e8b3bc83d0bf5b411e0a23a41981c72016f55eb71c"
+    },
+    "lf_metacarpal_E3M5.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/lf_metacarpal/lf_metacarpal_E3M5.glb",
+      "sha256": "e72f0f5f44b546521bf8cf633ced25cca52cf27c56f709f96843e39f6e1fefbc"
+    },
+    "th_proximal_E3M5.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/th_proximal/th_proximal_E3M5.glb",
+      "sha256": "6467f91b49724c3ed5060175bf57f25c1cd8f4420fe5f2918c614d93b897061f"
+    },
+    "th_middle_E3M5.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/th_middle/th_middle_E3M5.glb",
+      "sha256": "ee55b76bc86a39bbc80188fabc7c5d17036a109c8815932edf76d598a49611e6"
+    },
+    "th_distal_pst.glb": {
+      "source": "dex_benchmark/robots/assets/shadowhand/meshes/components/th_distal/pst/th_distal_pst.glb",
+      "sha256": "b3368a82fcb5de4ec3bc220ca31d9ebfb759905849699873eaf7bca6200df935"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+Actual task visual assets exported from the user-provided Evo-DexBench M06 kitchen_l1 scene.
+Fixture: RoboCasa / ManiSkill concrete_sink assets (model_0, spout_0, handle_0 and image0 texture).
+Robot: Franka Panda and Shadow Robot assets; existing notices in ../../robot/panda-shadow apply.
+Source materials, mesh geometry, local/world visual poses and recorded initial robot joint state retained.
+Display excludes kitchen walls and unrelated props; a neutral presentation base and camera housing are added separately.
+Full export provenance is retained in the private project repository.
