@@ -29,5 +29,17 @@
   "source_fps": 30,
   "compact_video": "static/videos/hero-web-720.mp4",
   "source_duration": 11.2,
-  "scroll_time_scale": 4
+  "scroll_time_scale": 4,
+  "frames": {
+    "count": 96,
+    "compact": "static/videos/intro-frames/compact",
+    "portrait": "static/videos/intro-frames/portrait",
+    "desktop": "static/videos/intro-frames/desktop",
+    "source": "hero-smooth60.mp4",
+    "source_frame_stride": 7,
+    "compact_resolution": [960, 540],
+    "portrait_resolution": [720, 900],
+    "portrait_source_crop": [380, 0, 864, 1080],
+    "desktop_resolution": [1440, 810]
+  }
 }
