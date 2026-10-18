@@ -1,13 +1,13 @@
 {
-  "duration": 11.2,
-  "light_on_seconds": 9.366666666666667,
-  "completion_seconds": 10.333333333333334,
+  "duration": 2.8,
+  "light_on_seconds": 2.341666666666667,
+  "completion_seconds": 2.5833333333333335,
   "width": 1920,
   "height": 1080,
   "fps": 60,
-  "speed": 1,
+  "speed": 4,
   "success_verified": true,
-  "render_type": "1920x1080 native simulator replay, followed by presentation-only motion-compensated frame interpolation.",
+  "render_type": "Scroll visualization derived from the native 1920x1080 simulator replay; adaptive presentation-only encoding.",
   "selected_episode_id": "m01_v1_00032",
   "source_cut_intervals": [
     {
@@ -15,16 +15,19 @@
       "end_seconds": 14.2,
       "output_start_seconds": 0,
       "output_end_seconds": 11.2,
-      "speed": 1
+      "speed": 4
     }
   ],
   "task_id": "m01",
-  "video": "static/videos/hero-smooth60.mp4",
-  "poster": "static/videos/hero-selected-unlit.jpg",
+  "video": "static/videos/hero-web-1080.mp4",
+  "poster": "static/videos/hero-selected-unlit.webp",
   "mode": "scroll-controlled",
   "autoplay": false,
-  "keyframe_interval": 3,
-  "editing": "Single contiguous 3.0-14.2s excerpt, with motion-compensated 30-to-60fps interpolation for the website intro. Original action timing, contact and light transition retained. Source recordings and evaluation data unchanged.",
-  "intro_video": "static/videos/hero-smooth60.mp4",
-  "source_fps": 30
+  "keyframe_interval": 6,
+  "editing": "Scroll-specific encoding: internal media clock is compressed 4x while normalized scroll progress maps to the same source action. No autoplay; the task-demo recordings retain their original timing.",
+  "intro_video": "static/videos/hero-web-1080.mp4",
+  "source_fps": 30,
+  "compact_video": "static/videos/hero-web-720.mp4",
+  "source_duration": 11.2,
+  "scroll_time_scale": 4
 }

@@ -8,26 +8,28 @@
   <meta property="og:title" content="Evo-DexBench — From related tasks to new skills">
   <meta property="og:description" content="Benchmarking Generalization across Related Tasks for Dexterous Manipulation">
   <title>Evo-DexBench — Generalization across Related Tasks</title>
-  <link rel="icon" href="static/images/brand-selected.png" type="image/png">
+  <link rel="icon" href="static/images/favicon.png" type="image/png">
   <link rel="stylesheet" href="static/css/site.css">
   <link rel="stylesheet" href="static/css/evidence.css?v=20261015-smooth1">
   <link rel="stylesheet" href="static/css/publication.css?v=20261015-scroll360">
-  <link rel="stylesheet" href="static/css/refinement.css?v=20261018-public1">
+  <link rel="stylesheet" href="static/css/refinement.css?v=20261018-perf1">
   <link rel="preload" href="static/fonts/google-sans-flex-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <script src="static/js/app.js?v=20261018-public1" type="module"></script>
+  <link rel="modulepreload" href="static/js/scroll-intro.js?v=20261018-perf1">
+  <script src="static/js/intro-entry.js?v=20261018-perf1" type="module"></script>
+  <script src="static/js/app.js?v=20261018-perf1" type="module"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header over-hero">
-    <a class="wordmark" href="#" aria-label="Evo-DexBench home"><img class="brand-mark brand-selected" src="static/images/brand-selected.png" alt="" width="44" height="48"><span>Evo-DexBench</span></a>
+    <a class="wordmark" href="#" aria-label="Evo-DexBench home"><img class="brand-mark brand-selected" src="static/images/brand-mark.webp" alt="" width="44" height="48"><span>Evo-DexBench</span></a>
     <nav id="main-navigation" aria-label="Main navigation"><a href="#hero-stage">Home</a><a href="#principle">Overview</a><a href="#tasks">Tasks</a><a href="#dataset">Dataset</a><a href="#evaluation">Protocol</a><a href="#results">Results</a></nav>
     <div class="nav-actions"><a class="nav-code" href="https://github.com/MINT-SJTU/Evo-DexBench" target="_blank" rel="noopener">Code </a><a class="nav-resource" href="leaderboard.html">Leaderboard <span aria-hidden="true"></span></a><button class="nav-toggle" aria-label="Toggle navigation" aria-controls="main-navigation" aria-expanded="false"><span></span><span></span></button></div>
   </header>
   <main id="main">
-    <div class="intro-track" id="hero-stage"><div class="intro-pin">
+    <div class="intro-track motion-ready" id="hero-stage"><div class="intro-pin">
 
       <section id="demonstrations" class="hero" aria-label="Full-screen scroll-controlled lamp demonstration">
-        <div class="hero-film hero-fullscreen"><video id="hero-video" muted playsinline preload="auto" poster="static/videos/hero-selected-unlit.jpg" aria-label="Scroll to complete the lamp-button demonstration"></video></div>
+        <div class="hero-film hero-fullscreen"><video id="hero-video" muted playsinline preload="auto" poster="static/videos/hero-selected-unlit.webp" aria-label="Scroll to complete the lamp-button demonstration"></video></div>
         <div class="hero-scrim"></div>
         <div class="hero-intro-copy"><p>DEXTEROUS MANIPULATION · RELATED-TASK GENERALIZATION</p><h1>Evo-DexBench</h1><div>Learn related tasks. Transfer to a new one.</div></div>
         <div class="hero-bottom wrap"><span class="hero-caption">30 tasks. Six functional families.</span><span class="scroll-cue">A short scroll turns on the light ↓</span></div>
@@ -40,7 +42,7 @@
     </section>
     <section id="task-gallery" class="task-wall section" aria-labelledby="task-gallery-title">
       <div class="task-wall-heading wrap"><span class="panel-kicker">THE BENCHMARK IN MOTION</span><h2 id="task-gallery-title">Dexterous manipulation, across 30 tasks.</h2><p>Six functional families. Single-hand and bimanual manipulation.</p></div>
-      <div class="task-wall-rows"></div>
+      <div class="task-wall-rows"><div class="task-wall-row" aria-hidden="true"><div class="task-wall-track"><div class="task-wall-group"><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div></div></div></div><div class="task-wall-row" aria-hidden="true"><div class="task-wall-track"><div class="task-wall-group"><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div></div></div></div><div class="task-wall-row" aria-hidden="true"><div class="task-wall-track"><div class="task-wall-group"><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div><div class="task-wall-card"></div></div></div></div></div>
       <div class="task-wall-footer wrap"><p>Hover to hold a row. Select a task to watch in full.</p><div><a href="#tasks">Explore the task families <span aria-hidden="true"></span></a></div></div>
     </section>
     <section class="stats wrap" aria-label="Benchmark at a glance"><div><strong>30</strong><span>dexterous tasks</span></div><div><strong>6</strong><span>functional families</span></div><div><strong>1,248</strong><span>multimodal demonstrations</span></div><div><strong>123</strong><span>taxels per hand</span></div></section>
@@ -49,7 +51,7 @@
       <div class="section-intro"><h2>Core–Gen protocol</h2><p>Pressing a lamp button and pressing a display button are different tasks with a shared functional interaction. Core–Gen asks whether a policy can learn that relation—and use it with just a few target demonstrations.</p></div>
       <div class="comparison-panel" id="core-comparison">
         <div class="comparison-top"><div><span class="panel-kicker">CHANGE THE SOURCE, KEEP THE TARGET</span><h3>Which experience is relevant?</h3></div><div class="segmented" role="group" aria-label="Source task relatedness"><button data-relatedness="matched" aria-pressed="true">Related Core</button><button data-relatedness="different" aria-pressed="false">Different family</button></div></div>
-        <div class="comparison-films"><figure><div class="comparison-media"><img id="source-poster" src="static/videos/hero-selected-unlit.jpg" alt="Lamp button source task"><video id="source-demo" muted loop playsinline preload="none" aria-label="Source task demonstration"></video><span class="film-role">CORE / SOURCE</span></div><figcaption><div><strong id="source-name">Lamp button</strong><span id="source-family">Button-driven interaction</span></div><span class="demo-budget">50 <small>demos / task</small></span></figcaption></figure><div class="comparison-arrow" aria-hidden="true">→</div><figure><div class="comparison-media"><img src="static/videos/showcase/m05.jpg" alt="Display power button target task"><video id="target-demo" muted loop playsinline preload="none" aria-label="Gen target demonstration"></video><span class="film-role target">GEN / TARGET</span></div><figcaption><div><strong>Display power button</strong><span>Held-out target within the button family</span></div><span class="demo-budget accent">8 <small>target demos</small></span></figcaption></figure></div>
+        <div class="comparison-films"><figure><div class="comparison-media"><img id="source-poster" data-src="static/videos/hero-selected-unlit.webp" alt="Lamp button source task"><video id="source-demo" muted loop playsinline preload="none" aria-label="Source task demonstration"></video><span class="film-role">CORE / SOURCE</span></div><figcaption><div><strong id="source-name">Lamp button</strong><span id="source-family">Button-driven interaction</span></div><span class="demo-budget">50 <small>demos / task</small></span></figcaption></figure><div class="comparison-arrow" aria-hidden="true">→</div><figure><div class="comparison-media"><img data-src="static/videos/showcase/m05.jpg" alt="Display power button target task"><video id="target-demo" muted loop playsinline preload="none" aria-label="Gen target demonstration"></video><span class="film-role target">GEN / TARGET</span></div><figcaption><div><strong>Display power button</strong><span>Held-out target within the button family</span></div><span class="demo-budget accent">8 <small>target demos</small></span></figcaption></figure></div>
         <div class="comparison-bottom"><p id="relatedness-note">Both tasks displace a localized control to change device state. Four Core tasks provide different instances of this interaction.</p></div>
         <p class="panel-footnote">Representative task demonstrations illustrate source relatedness. Experimental outcomes are reported in the results below.</p>
       </div>
@@ -65,7 +67,7 @@
       <div class="section-label"><span>03 / THE DATASET</span><span>MULTIMODAL DATA</span></div><div class="section-intro"><h2>Multimodal demonstrations</h2><p>Collected with Quest 3 VR teleoperation, the benchmark pairs visual context with hand configuration, tactile feedback, and actions. Every task spans three scene layouts.</p></div>
       <div class="dataset-console" id="dataset-console">
         <div class="console-heading"><div><span class="panel-kicker">ONE EPISODE, TIME-ALIGNED OBSERVATIONS</span><h3>Synchronized observations</h3></div><span class="recording-tag">HD SIMULATION REPLAY</span></div>
-        <div class="camera-grid" id="camera-grid"></div>
+        <div class="camera-grid" id="camera-grid"><figure class="camera-tile" aria-hidden="true"><div class="camera-media" style="aspect-ratio:16/9"></div><figcaption><span>01 / Context</span><small>1280 × 720</small></figcaption></figure><figure class="camera-tile" aria-hidden="true"><div class="camera-media" style="aspect-ratio:16/9"></div><figcaption><span>02 / Interaction</span><small>1280 × 720</small></figcaption></figure><figure class="camera-tile" aria-hidden="true"><div class="camera-media" style="aspect-ratio:16/9"></div><figcaption><span>03 / Wrist</span><small>1280 × 720</small></figcaption></figure></div>
         <div class="sync-controls"><button id="dataset-play" class="round-control" aria-label="Play synchronized observations" disabled>▶</button><label class="sr-only" for="dataset-seek">Recorded episode time</label><input id="dataset-seek" type="range" min="0" max="1000" value="0" disabled><output id="dataset-time">0.0 s</output><button id="dataset-contact" class="text-link" disabled>Jump to contact </button></div>
         <div class="sensor-grid"><div class="taxel-panel"><div class="sensor-heading"><h4>123 tactile channels</h4><span id="taxel-sample-time">10 Hz retained samples</span></div><svg id="taxel-grid" viewBox="0 0 492 48" role="img" aria-label="Recorded tactile force by channel index"></svg><div class="sensor-legend"><span>Channel index 0–122</span><span><i></i>0 <b></b>24 N</span></div><p>Channel order, not a spatial map of the hand.</p></div><div class="force-panel"><div class="sensor-heading"><h4>Maximum taxel force</h4><span><strong id="current-force">0.00</strong> N</span></div><svg id="force-trace" viewBox="0 0 500 92" role="img" aria-label="Recorded maximum taxel force over the episode"></svg><div class="sensor-legend"><span>Full 30 Hz frame trace</span><span id="recorded-peak"></span></div></div></div>
         <p id="dataset-note" class="panel-footnote">Three widescreen camera views and tactile measurements are captured together during a simulation replay.</p>
@@ -95,7 +97,7 @@
   <footer class="project-footer">
     <div class="wrap">
       <div class="footer-columns">
-        <div class="footer-about"><a class="footer-brand" href="#hero-stage"><img src="static/images/brand-selected.png" alt="" width="38" height="44"><strong>Evo-DexBench</strong></a><p>Benchmarking generalization across related tasks for dexterous manipulation.</p></div>
+        <div class="footer-about"><a class="footer-brand" href="#hero-stage"><img src="static/images/brand-mark.webp" alt="" width="38" height="44"><strong>Evo-DexBench</strong></a><p>Benchmarking generalization across related tasks for dexterous manipulation.</p></div>
         <div class="footer-column"><h2>Explore</h2><ul><li><a href="#hero-stage">Home</a></li><li><a href="#tasks">Tasks</a></li><li><a href="#evaluation">Evaluation</a></li><li><a href="leaderboard.html">Leaderboard</a></li></ul></div>
         <div class="footer-column"><h2>Resources</h2><ul><li><a href="https://arxiv.org/abs/2610.21180" target="_blank" rel="noopener">Paper</a></li><li><a href="https://github.com/MINT-SJTU/Evo-DexBench" target="_blank" rel="noopener">MINT-SJTU / Evo-DexBench</a></li><li><a href="https://huggingface.co/collections/MINT-SJTU/evo-dexbench" target="_blank" rel="noopener">Dataset on Hugging Face</a></li><li><a href="#resources">Citation</a></li></ul></div>
         <div class="footer-column footer-contact"><h2>Contact</h2><a href="mailto:sjtu8620588@sjtu.edu.cn">sjtu8620588@sjtu.edu.cn</a></div>

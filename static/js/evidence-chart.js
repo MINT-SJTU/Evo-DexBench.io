@@ -65,7 +65,7 @@ export function renderEvidenceChart(options){
     node._animation?.cancel();cancelAnimationFrame(node._counter);
     const animate=!reducedMotion&&entered;
     // Flush the zero width of newly inserted bars before setting their target.
-    if(fresh)bar.getBoundingClientRect();
+    if(fresh&&animate)bar.getBoundingClientRect();
     bar.style.transition=animate?'width 780ms cubic-bezier(.22,1,.36,1)':'none';
     bar.style.width=`${target*100}%`;
     out.textContent=format(value,stage);

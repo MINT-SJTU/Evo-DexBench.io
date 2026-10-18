@@ -16,15 +16,16 @@ function prepareSectionNavigation(){
   };
 }
 const finishInitialNavigation=prepareSectionNavigation();
-import { setupScrollIntro } from './scroll-intro.js?v=20261017-layouts2';
-import { setupTaskWall } from './task-wall.js?v=20261017-layouts2';
+import {observeMedia,whenNear} from './media-loading.js?v=20261018-perf1';
+observeMedia();
+import { setupTaskWall } from './task-wall.js?v=20261018-perf1';
 import { setupNavigation } from './navigation.js?v=20261016-results1';
 setupNavigation();
 import { setupModelComparison, MODELS } from './model-comparison.js?v=20261017-ranking3';
-import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261017-layouts2';
+import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261018-perf1';
 import { renderTransferHeatmap } from './transfer-heatmap.js?v=20261017-target4';
 import { renderEvidenceChart } from './evidence-chart.js?v=20261017-layouts2';
-let data, hdMedia = {}, hoverMedia = {}, heroMedia = {}, layoutMedia = {}, currentFamily = 0, currentTask = 0, currentLayout = 0;
+let data, hdMedia = {}, hoverMedia = {}, layoutMedia = {}, currentFamily = 0, currentTask = 0, currentLayout = 0;
 let resultMode = 'baseline', selectedModel = 'π0.5', resultFamily = 'button', transferTarget = 'm05';
 
 let plotMetric=0,plotRows=[];
@@ -78,13 +79,14 @@ function renderFamily() {
   const card=(task,i)=>{
     const media=hdMedia[task.id] || hoverMedia[task.id];
     const poster=media?.poster || task.scenes[0];
-    return `<button data-task="${i}" class="task-card ${task.role==='Gen'?'is-gen':''} ${media?.width===media?.height?'square-recording':'wide-recording'}" style="--media-ratio:${media?.width||16}/${media?.height||9}" aria-label="${escape(task.name)} — ${task.role} task. Hover to preview; click for details."><span class="task-media"><img src="${poster}" alt="" loading="lazy"><span class="preview-cue">▶ <span>Hover to play${media?.speed>1?' · '+media.speed+'×':''}</span></span></span><span class="task-card-bottom"><span class="task-name">${escape(task.name)}</span><span class="task-role">${task.role}${task.role==='Gen'?' · 8 demos':''}</span></span>${task.role==='Gen'?`<span class="gen-instruction">${escape(task.instruction)}</span>`:''}</button>`;
+    return `<button data-task="${i}" class="task-card ${task.role==='Gen'?'is-gen':''} ${media?.width===media?.height?'square-recording':'wide-recording'}" style="--media-ratio:${media?.width||16}/${media?.height||9}" aria-label="${escape(task.name)} — ${task.role} task. Hover to preview; click for details."><span class="task-media"><img data-src="${poster}" alt="" loading="lazy"><span class="preview-cue">▶ <span>Hover to play${media?.speed>1?' · '+media.speed+'×':''}</span></span></span><span class="task-card-bottom"><span class="task-name">${escape(task.name)}</span><span class="task-role">${task.role}${task.role==='Gen'?' · 8 demos':''}</span></span>${task.role==='Gen'?`<span class="gen-instruction">${escape(task.instruction)}</span>`:''}</button>`;
   };
   $('#task-list').innerHTML=family.tasks.slice(0,4).map(card).join('')+`<div class="atlas-convergence" aria-hidden="true"><svg viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M125 0 Q125 55 500 82 M375 0 Q375 55 500 82 M625 0 Q625 55 500 82 M875 0 Q875 55 500 82 M500 82 V100"/></svg><span>SAME INTERACTION · NEW TASK</span></div>`+card(family.tasks[4],4);
   $$('#task-list button').forEach(button=>{
     const index=Number(button.dataset.task); attachPreview(button,family.tasks[index].id);
     button.addEventListener('click',()=>openTask(index));
   });
+  observeMedia();
   if(!reducedMotion)$('#atlas').animate([{opacity:.35,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:450,easing:'cubic-bezier(.16,1,.3,1)'});
 }
 
@@ -149,8 +151,8 @@ async function init() {
   const query=new URLSearchParams(location.search),requestedModel=query.get('model');if(MODELS.includes(requestedModel))selectedModel=requestedModel;
   const requestedFamily=data.families.find(f=>f.tasks.some(t=>t.id===query.get('task')));if(requestedFamily)resultFamily=requestedFamily.id;
   const readJSON=async path=>{const r=await fetch(path,{cache:'no-cache'});return r.ok?r.json():{};};
-  [hdMedia,hoverMedia,heroMedia,layoutMedia]=await Promise.all(['hd','hover','hero','layouts'].map(name=>readJSON(`static/videos/${name}.json`)));
-  $('#family-tabs').innerHTML = data.families.map((family,i)=>`<button data-family="${i}" aria-pressed="${i===0}"><img src="${family.tasks[4].scenes[0]}" alt="" loading="lazy"><span><b>${escape(family.title)}</b><small>${family.setup} · 4 Core + 1 Gen</small></span></button>`).join('');
+  [hdMedia,hoverMedia,layoutMedia]=await Promise.all(['hd','hover','layouts'].map(name=>readJSON(`static/videos/${name}.json`)));
+  $('#family-tabs').innerHTML = data.families.map((family,i)=>`<button data-family="${i}" aria-pressed="${i===0}"><img data-src="${family.tasks[4].scenes[0]}" alt="" loading="lazy"><span><b>${escape(family.title)}</b><small>${family.setup} · 4 Core + 1 Gen</small></span></button>`).join('');
   $$('#family-tabs button').forEach(button=>button.addEventListener('click',()=>{currentFamily=Number(button.dataset.family);currentTask=0;currentLayout=0;renderFamily();}));
   $$('.layout-controls button').forEach(button=>button.addEventListener('click',()=>{currentLayout=Number(button.dataset.layout);renderTask();}));
   $('#task-video').addEventListener('loadeddata',()=>{$('#task-media-status').hidden=true;});
@@ -173,12 +175,12 @@ async function init() {
     currentFamily=data.families.findIndex(family=>family.tasks.some(task=>task.id===id));
     renderFamily();openTask(data.families[currentFamily].tasks.findIndex(task=>task.id===id),true);
   });
-  const galleryReady=setupTaskWall({families:data.families,reducedMotion}).catch(error=>{console.error(error);document.querySelector('.task-wall-footer>p').textContent='Preview unavailable. Explore the task families below.';});
-  renderFamily();renderResults();setupScrollIntro({reducedMotion,media:heroMedia});
+  whenNear($('#task-gallery'),()=>setupTaskWall({families:data.families,reducedMotion}).catch(error=>{console.error(error);document.querySelector('.task-wall-footer>p').textContent='Preview unavailable. Explore the task families below.';}));
+  renderFamily();renderResults();
   setupModelComparison($('#model-overview'),data,{onSelectModel:(model,scope)=>{selectedModel=model;resultMode='baseline';if(scope!=='shared')resultFamily=data.families.find(f=>f.tasks.some(t=>t.id===scope)).id;renderResults();document.querySelector('.results-detail-heading').scrollIntoView({behavior:reducedMotion?'instant':'smooth',block:'start'});}});
   setupCoreComparison({reducedMotion});setupEvaluation();
-  const datasetReady=setupDatasetInspector({reducedMotion}).catch(error=>{console.error(error);$('#dataset-note').textContent='Dataset recordings are temporarily unavailable. Please refresh to retry.';});
-  Promise.allSettled([galleryReady,datasetReady,document.fonts.ready]).then(finishInitialNavigation);
+  whenNear($('#dataset-console'),()=>setupDatasetInspector({reducedMotion}).catch(error=>{console.error(error);$('#dataset-note').textContent='Dataset recordings are temporarily unavailable. Please refresh to retry.';}));
+  if(location.hash)document.fonts.ready.then(finishInitialNavigation);
 }
 init().catch(error=>{
   console.error(error);

@@ -1,10 +1,11 @@
+import {observeMedia} from './media-loading.js?v=20261018-perf1';
 /** @typedef {{id:string,name:string,role:string}} Task */
 /** @param {{families:Array<{title:string,tasks:Task[]}>,reducedMotion:boolean}} options */
 export async function setupTaskWall({families,reducedMotion}){
   const section=document.querySelector('#task-gallery'),rowsHost=section.querySelector('.task-wall-rows');
-  const response=await fetch('static/videos/wall/manifest.json');
+  const response=await fetch('static/videos/wall/manifest.json',{cache:'no-cache'});
   if(!response.ok)throw new Error('Task preview media unavailable');
-  const media=await response.json();
+  const media=await response.json();rowsHost.replaceChildren();
   const ordered=Array.from({length:5},(_,i)=>families.map(f=>({...f.tasks[i],family:f.title}))).flat();
   const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   let visible=false,paused=reducedMotion,timer;
@@ -13,7 +14,7 @@ export async function setupTaskWall({families,reducedMotion}){
     const row=document.createElement('div');row.className='task-wall-row';
     row.setAttribute('aria-label',`Task demonstrations, row ${index+1}`);
     const tasks=ordered.slice(index*10,index*10+10);
-    row.innerHTML=`<div class="task-wall-track">${[0,1].map(copy=>`<div class="task-wall-group" ${copy?'aria-hidden="true"':''}>${tasks.map(task=>`<button class="task-wall-card" data-task="${task.id}" ${copy?'tabindex="-1"':''} aria-label="Watch ${escape(task.name)}"><img src="${media[task.id].poster}" alt="" loading="lazy" width="640" height="360"><video muted loop playsinline preload="none" aria-hidden="true"></video><span class="wall-card-copy"><small>${escape(task.family)}</small><strong>${escape(task.name)}</strong></span><span class="wall-open" aria-hidden="true"></span></button>`).join('')}</div>`).join('')}</div>`;
+    row.innerHTML=`<div class="task-wall-track">${[0,1].map(copy=>`<div class="task-wall-group" ${copy?'aria-hidden="true"':''}>${tasks.map(task=>`<button class="task-wall-card" data-task="${task.id}" ${copy?'tabindex="-1"':''} aria-label="Watch ${escape(task.name)}"><img data-src="${media[task.id].poster}" alt="" loading="lazy" width="640" height="360"><video muted loop playsinline preload="none" aria-hidden="true"></video><span class="wall-card-copy"><small>${escape(task.family)}</small><strong>${escape(task.name)}</strong></span><span class="wall-open" aria-hidden="true"></span></button>`).join('')}</div>`).join('')}</div>`;
     rowsHost.append(row);rows.push(row);
     const rowCards=[...row.querySelectorAll('.task-wall-card')];cards.push(...rowCards);
     for(const card of rowCards){
@@ -56,5 +57,5 @@ export async function setupTaskWall({families,reducedMotion}){
   document.querySelector('#task-dialog').addEventListener('close',update);
   addEventListener('pagehide',()=>{clearInterval(timer);cards.forEach(card=>card.querySelector('video').pause());});
   addEventListener('pageshow',()=>{clearInterval(timer);if(visible)timer=setInterval(update,300);update();});
-  section.dataset.ready='true';update();
+  observeMedia(section);section.dataset.ready='true';update();
 }

@@ -1,3 +1,4 @@
+import {observeMedia,whenNear} from './media-loading.js?v=20261018-perf1';
 import { CONDITION_COPY } from './protocol-parameters.js?v=20261016-studio1';
 export function setupCoreComparison({reducedMotion}) {
   const panel=document.querySelector('#core-comparison');
@@ -21,6 +22,7 @@ export function setupCoreComparison({reducedMotion}) {
   panel.querySelectorAll('[data-relatedness]').forEach(button=>button.addEventListener('click',()=>{
     mode=button.dataset.relatedness;source.pause();source.classList.remove('is-playing');source.removeAttribute('src');source.load();
     document.querySelector('#source-poster').src=sources[mode].poster;
+    delete document.querySelector('#source-poster').dataset.src;
     document.querySelector('#source-name').textContent=sources[mode].name;
     document.querySelector('#source-family').textContent=sources[mode].family;
     document.querySelector('#relatedness-note').textContent=sources[mode].note;
@@ -36,7 +38,7 @@ export function setupCoreComparison({reducedMotion}) {
 export function setupEvaluation(){
   const conditions=CONDITION_COPY.map(c=>[c.name,c.description,c.change,c.keep]);
   const panel=document.querySelector('.evaluation-panel');
-  panel.innerHTML=`<div class="protocol-rail"><div><b>01</b><span><strong>Fix the task</strong><small>Same goal. Same scoring.</small></span></div><i aria-hidden="true">→</i><div><b>02</b><span><strong>Vary one condition</strong><small>Change one axis at a time.</small></span></div><i aria-hidden="true">→</i><div><b>03</b><span><strong>Measure outcomes</strong><small>Success and partial progress.</small></span></div></div><div class="protocol-stage" data-condition="0"><div class="protocol-copy"><div class="protocol-kicker"><span class="panel-kicker">CONTROLLED EVALUATION</span><span class="protocol-tour-label">Auto tour · 5s</span></div><div class="protocol-title"><span id="condition-number">01</span><h3 id="condition-title">Nominal</h3></div><p id="condition-description"></p><dl><div><dt>VARY</dt><dd id="condition-change"></dd></div><div><dt>KEEP</dt><dd id="condition-fixed"></dd></div></dl><div class="protocol-example"><strong>Parameter example · within configured bounds</strong><span id="condition-example"></span></div></div><div class="protocol-diagram"><img class="protocol-fallback" src="static/images/protocol-scene.png?v=20261016-studio1" alt="Reference setup for the 3D evaluation schematic"><span class="diagram-caption">Loading condition-specific parameter view…</span></div></div><div class="condition-selector" id="condition-selector" role="group" aria-label="Evaluation condition"></div><div class="protocol-schedule"><div class="schedule-total"><strong>100</strong><span>evaluation episodes<small>20 per condition · reference schedule</small></span></div><div class="episode-dots" id="episode-dots" aria-label="Five groups of twenty evaluation episodes"></div><div class="protocol-measures"><span>SUCCESS RATE <b>Task completed?</b></span><span>STAGE SCORE <b>How much progress?</b></span></div></div><p class="panel-footnote">Reference schedule: 5 seeds, 3 layouts, 100 episodes. Blocks show allocation. Physical and spatial values here follow the faucet task; bounds and object parameters vary by task.</p>`;
+  panel.innerHTML=`<div class="protocol-rail"><div><b>01</b><span><strong>Fix the task</strong><small>Same goal. Same scoring.</small></span></div><i aria-hidden="true">→</i><div><b>02</b><span><strong>Vary one condition</strong><small>Change one axis at a time.</small></span></div><i aria-hidden="true">→</i><div><b>03</b><span><strong>Measure outcomes</strong><small>Success and partial progress.</small></span></div></div><div class="protocol-stage" data-condition="0"><div class="protocol-copy"><div class="protocol-kicker"><span class="panel-kicker">CONTROLLED EVALUATION</span><span class="protocol-tour-label">Auto tour · 5s</span></div><div class="protocol-title"><span id="condition-number">01</span><h3 id="condition-title">Nominal</h3></div><p id="condition-description"></p><dl><div><dt>VARY</dt><dd id="condition-change"></dd></div><div><dt>KEEP</dt><dd id="condition-fixed"></dd></div></dl><div class="protocol-example"><strong>Parameter example · within configured bounds</strong><span id="condition-example"></span></div></div><div class="protocol-diagram"><img class="protocol-fallback" data-src="static/images/protocol-scene.png?v=20261016-studio1" alt="Reference setup for the 3D evaluation schematic"><span class="diagram-caption">Loading condition-specific parameter view…</span></div></div><div class="condition-selector" id="condition-selector" role="group" aria-label="Evaluation condition"></div><div class="protocol-schedule"><div class="schedule-total"><strong>100</strong><span>evaluation episodes<small>20 per condition · reference schedule</small></span></div><div class="episode-dots" id="episode-dots" aria-label="Five groups of twenty evaluation episodes"></div><div class="protocol-measures"><span>SUCCESS RATE <b>Task completed?</b></span><span>STAGE SCORE <b>How much progress?</b></span></div></div><p class="panel-footnote">Reference schedule: 5 seeds, 3 layouts, 100 episodes. Blocks show allocation. Physical and spatial values here follow the faucet task; bounds and object parameters vary by task.</p>`;
   const selector=document.querySelector('#condition-selector'),dots=document.querySelector('#episode-dots');
   selector.innerHTML=conditions.map(([name],i)=>`<button data-condition="${i}" aria-pressed="${i===0}"><span>0${i+1}</span>${name}<b></b></button>`).join('');
   dots.innerHTML=conditions.map(([name],i)=>`<div data-episode-group="${i}" aria-label="${name}: twenty episodes">${'<i></i>'.repeat(20)}<span>${name}</span></div>`).join('');
@@ -75,23 +77,29 @@ export function setupEvaluation(){
   let measuredWidth=0;
   function reserveCopyHeight(){
     const width=copy.getBoundingClientRect().width;if(!width)return;measuredWidth=width;
-    const measure=copy.cloneNode(true);measure.setAttribute('aria-hidden','true');measure.inert=true;
-    measure.style.cssText=`position:fixed;left:-10000px;top:0;visibility:hidden;width:${width}px;pointer-events:none;`;
-    const nodes=fields.map(id=>measure.querySelector(id));measure.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
-    nodes.forEach(node=>{node.style.minHeight='0';node.style.height='auto';node.style.display='block';});
-    panel.querySelector('.protocol-stage').append(measure);const heights=fields.map(()=>0);
-    for(const row of values)nodes.forEach((node,i)=>{node.textContent=row[i];heights[i]=Math.max(heights[i],Math.ceil(node.getBoundingClientRect().height));});
-    measure.remove();fields.forEach((id,i)=>{const node=copy.querySelector(id);node.style.display='block';node.style.minHeight=`${heights[i]}px`;});
+    // Write all variants first, then read their sizes in one layout pass.
+    const fragment=document.createDocumentFragment(),measures=[],heights=fields.map(()=>0);
+    for(const row of values){
+      const measure=copy.cloneNode(true);measure.setAttribute('aria-hidden','true');measure.inert=true;
+      measure.style.cssText=`position:fixed;left:-10000px;top:0;visibility:hidden;width:${width}px;pointer-events:none;contain:layout style;`;
+      const nodes=fields.map(id=>measure.querySelector(id));measure.querySelectorAll('[id]').forEach(node=>node.removeAttribute('id'));
+      nodes.forEach((node,i)=>{node.style.minHeight='0';node.style.height='auto';node.style.display='block';node.textContent=row[i];});
+      fragment.append(measure);measures.push({measure,nodes});
+    }
+    panel.querySelector('.protocol-stage').append(fragment);
+    for(const {nodes} of measures)nodes.forEach((node,i)=>{heights[i]=Math.max(heights[i],Math.ceil(node.getBoundingClientRect().height));});
+    measures.forEach(({measure})=>measure.remove());
+    fields.forEach((id,i)=>{const node=copy.querySelector(id);node.style.display='block';node.style.minHeight=`${heights[i]}px`;});
   }
-  reserveCopyHeight();document.fonts.ready.then(reserveCopyHeight);
-  new ResizeObserver(()=>{if(Math.abs(copy.getBoundingClientRect().width-measuredWidth)>.5)reserveCopyHeight();}).observe(copy);
+  whenNear(copy,()=>document.fonts.ready.then(reserveCopyHeight));
+  new ResizeObserver(()=>{if(measuredWidth&&Math.abs(copy.getBoundingClientRect().width-measuredWidth)>.5)reserveCopyHeight();}).observe(copy);
   const diagram=document.querySelector('.protocol-diagram');
   const sceneLoader=new IntersectionObserver(entries=>{
     if(!entries.some(e=>e.isIntersecting))return;
     sceneLoader.disconnect();
     import('./protocol-scene.js?v=20261017-layouts2').then(module=>module.mountProtocolScene(diagram)).catch(()=>{diagram.querySelector('.diagram-caption').textContent='Static reference view · condition descriptions remain interactive';});
   },{rootMargin:'300px'});sceneLoader.observe(diagram);
-  setupProtocolExamples(panel);
+  setupProtocolExamples(panel);observeMedia(panel);
 }
 
 
@@ -100,7 +108,7 @@ export function setupEvaluation(){
 function setupProtocolExamples(panel){
   const examples=[['m01','Lamp button','Press','static/videos/hero-selected.mp4','static/videos/hero-selected.jpg'],['m06','Faucet handle','Rotate','static/videos/showcase/m06.mp4','static/videos/showcase/m06.jpg'],['b11','Laptop closing','Coordinate','static/videos/showcase/b11.mp4','static/videos/showcase/b11.jpg']];
   const section=document.createElement('div');section.className='protocol-task-examples';
-  section.innerHTML=`<div class="protocol-examples-heading"><h3>Different tasks. The same evaluation axes.</h3><p>Task demonstrations · not perturbation rollouts</p></div><div class="protocol-example-films">${examples.map(([id,name,verb,src,poster])=>`<button data-task="${id}" aria-label="Watch ${name}"><div><video muted loop playsinline preload="none" poster="${poster}" data-video="${src}"></video></div><span><small>${verb}</small><strong>${name}</strong><b aria-hidden="true"></b></span></button>`).join('')}</div>`;
+  section.innerHTML=`<div class="protocol-examples-heading"><h3>Different tasks. The same evaluation axes.</h3><p>Task demonstrations · not perturbation rollouts</p></div><div class="protocol-example-films">${examples.map(([id,name,verb,src,poster])=>`<button data-task="${id}" aria-label="Watch ${name}"><div><video muted loop playsinline preload="none" data-poster="${poster}" data-video="${src}"></video></div><span><small>${verb}</small><strong>${name}</strong><b aria-hidden="true"></b></span></button>`).join('')}</div>`;
   panel.querySelector('.protocol-schedule').before(section);
   const videos=[...section.querySelectorAll('video')];let visible=false;const motion=matchMedia('(prefers-reduced-motion: reduce)');
   function play(){videos.forEach(video=>{if(!visible||document.hidden||motion.matches||document.querySelector('dialog[open]')){video.pause();return;}if(!video.src)video.src=video.dataset.video;video.play().catch(()=>{});});}
@@ -123,8 +131,8 @@ export async function setupDatasetInspector({reducedMotion}) {
   root.querySelector('.panel-kicker').textContent='SUSTAINED CONTACT / THREE SYNCHRONIZED VIEWS';
   root.querySelector('.recording-tag').textContent=manifest.rerendered?'HD SIMULATION REPLAY':'ORIGINAL RECORDING';
   document.querySelector('#dataset-note').textContent=`${manifest.excerpt_description||''} Three ${manifest.width} × ${manifest.height} views and tactile signals share the same ${manifest.rerendered?'replay steps':'observation IDs'}. Playback: ${manifest.fps} Hz. Tactile samples: ${manifest.signal_sample_hz} Hz.${manifest.rerendered?' HD views are rendered for visualization; original dataset images are 224 × 224.':''}`;
-  grid.innerHTML=cameras.map((key,i)=>`<figure class="camera-tile"><div class="camera-media" style="aspect-ratio:${manifest.cameras[key].width}/${manifest.cameras[key].height}"><img src="${manifest.cameras[key].poster}?episode=${encodeURIComponent(manifest.episode_id)}" alt="${names[key]} camera view"><video muted playsinline preload="none" aria-label="${names[key]} camera recording"></video></div><figcaption><span>0${i+1} / ${names[key]}</span><small>${manifest.cameras[key].width} × ${manifest.cameras[key].height}</small></figcaption></figure>`).join('');
-  const videos=[...grid.querySelectorAll('video')],master=videos[0];
+  grid.innerHTML=cameras.map((key,i)=>`<figure class="camera-tile"><div class="camera-media" style="aspect-ratio:${manifest.cameras[key].width}/${manifest.cameras[key].height}"><img data-src="${manifest.cameras[key].poster}?episode=${encodeURIComponent(manifest.episode_id)}" alt="${names[key]} camera view"><video muted playsinline preload="none" aria-label="${names[key]} camera recording"></video></div><figcaption><span>0${i+1} / ${names[key]}</span><small>${manifest.cameras[key].width} × ${manifest.cameras[key].height}</small></figcaption></figure>`).join('');
+  observeMedia(grid);const videos=[...grid.querySelectorAll('video')],master=videos[0];
   const svgNS='http://www.w3.org/2000/svg';
   const heatmap=document.querySelector('#taxel-grid');
   const cells=Array.from({length:123},(_,i)=>{
