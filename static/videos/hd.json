@@ -1,0 +1,321 @@
+{
+  "m01": {
+    "video": "static/videos/m01-hd.mp4",
+    "poster": "static/videos/m01-hd.jpg",
+    "label": "Canonical demonstration re-render \u00b7 success verified \u00b7 native 720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720
+  },
+  "b11": {
+    "video": "static/videos/b11-hd.mp4",
+    "poster": "static/videos/b11-hd.jpg",
+    "label": "Canonical demonstration re-render \u00b7 success verified \u00b7 native 720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720
+  },
+  "m06": {
+    "video": "static/videos/m06-hd.mp4",
+    "poster": "static/videos/m06-hd.jpg",
+    "label": "Canonical demonstration re-render \u00b7 success verified \u00b7 native 720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720
+  },
+  "m05": {
+    "video": "static/videos/m05-hd.mp4",
+    "poster": "static/videos/m05-hd.jpg",
+    "label": "Canonical demonstration re-render - success verified - native 720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 31.566667
+  },
+  "m02": {
+    "video": "static/videos/m02-hd.mp4",
+    "poster": "static/videos/m02-hd.jpg",
+    "label": "Canonical demonstration re-render - success verified - native 720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 11.0
+  },
+  "m03": {
+    "video": "static/videos/m03-hd.mp4",
+    "poster": "static/videos/m03-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 17.0,
+    "success_verified": true
+  },
+  "m04": {
+    "video": "static/videos/m04-hd.mp4",
+    "poster": "static/videos/m04-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 6.9,
+    "success_verified": true
+  },
+  "m07": {
+    "video": "static/videos/m07-hd.mp4",
+    "poster": "static/videos/m07-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 17.6,
+    "success_verified": true
+  },
+  "m08": {
+    "video": "static/videos/m08-hd.mp4",
+    "poster": "static/videos/m08-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 10.133333,
+    "success_verified": true
+  },
+  "m10": {
+    "video": "static/videos/m10-hd.mp4",
+    "poster": "static/videos/m10-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 8.166667,
+    "success_verified": true
+  },
+  "b01": {
+    "video": "static/videos/b01-hd.mp4",
+    "poster": "static/videos/b01-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 25.033333,
+    "success_verified": true
+  },
+  "m09": {
+    "video": "static/videos/m09-hd.mp4",
+    "poster": "static/videos/m09-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 8.533333,
+    "success_verified": true
+  },
+  "b08": {
+    "video": "static/videos/b08-hd.mp4",
+    "poster": "static/videos/b08-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 8.933333,
+    "success_verified": true
+  },
+  "b09": {
+    "video": "static/videos/b09-hd.mp4",
+    "poster": "static/videos/b09-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 5.666667,
+    "success_verified": true
+  },
+  "b10": {
+    "video": "static/videos/b10-hd.mp4",
+    "poster": "static/videos/b10-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 5.6,
+    "success_verified": true
+  },
+  "b12": {
+    "video": "static/videos/b12-hd.mp4",
+    "poster": "static/videos/b12-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 7.633333,
+    "success_verified": true
+  },
+  "b13": {
+    "video": "static/videos/b13-hd.mp4",
+    "poster": "static/videos/b13-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 6.4,
+    "success_verified": true
+  },
+  "b14": {
+    "video": "static/videos/b14-hd.mp4",
+    "poster": "static/videos/b14-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 6.333333,
+    "success_verified": true
+  },
+  "b15": {
+    "video": "static/videos/b15-hd.mp4",
+    "poster": "static/videos/b15-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 7.3,
+    "success_verified": true
+  },
+  "m13": {
+    "video": "static/videos/m13-hd.mp4",
+    "poster": "static/videos/m13-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 18.633333,
+    "success_verified": true
+  },
+  "m11": {
+    "video": "static/videos/m11-hd.mp4",
+    "poster": "static/videos/m11-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 36.233333,
+    "success_verified": true
+  },
+  "m12": {
+    "video": "static/videos/m12-hd.mp4",
+    "poster": "static/videos/m12-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 20.9,
+    "success_verified": true
+  },
+  "m14": {
+    "video": "static/videos/m14-hd.mp4",
+    "poster": "static/videos/m14-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 26.4,
+    "success_verified": true
+  },
+  "m15": {
+    "video": "static/videos/m15-hd.mp4",
+    "poster": "static/videos/m15-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 21.166667,
+    "success_verified": true
+  },
+  "b02": {
+    "video": "static/videos/b02-hd.mp4",
+    "poster": "static/videos/b02-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 31.266667,
+    "success_verified": true
+  },
+  "b03": {
+    "video": "static/videos/b03-hd.mp4",
+    "poster": "static/videos/b03-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 11.733333,
+    "success_verified": true
+  },
+  "b04": {
+    "video": "static/videos/b04-hd.mp4",
+    "poster": "static/videos/b04-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 23.533333,
+    "success_verified": true
+  },
+  "b05": {
+    "video": "static/videos/b05-hd.mp4",
+    "poster": "static/videos/b05-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 16.566667,
+    "success_verified": true
+  },
+  "b06": {
+    "video": "static/videos/b06-hd.mp4",
+    "poster": "static/videos/b06-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 12.8,
+    "success_verified": true
+  },
+  "b07": {
+    "video": "static/videos/b07-hd.mp4",
+    "poster": "static/videos/b07-hd.jpg",
+    "label": "HD simulation replay - success verified - native720p",
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "duration_seconds": 16.966667,
+    "success_verified": true
+  }
+}
