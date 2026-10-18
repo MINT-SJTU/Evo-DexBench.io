@@ -1,4 +1,4 @@
-import {observeMedia,whenNear} from './media-loading.js?v=20261018-perf1';
+import {observeMedia,whenNear} from './media-loading.js?v=20261018-perf2';
 import { CONDITION_COPY } from './protocol-parameters.js?v=20261016-studio1';
 export function setupCoreComparison({reducedMotion}) {
   const panel=document.querySelector('#core-comparison');

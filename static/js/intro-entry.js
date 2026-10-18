@@ -1,6 +1,6 @@
-import {setupScrollIntro} from './scroll-intro.js?v=20261018-perf1';
+import {setupScrollIntro} from './scroll-intro.js?v=20261018-perf2';
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-fetch('static/videos/hero.json?v=20261018-perf1',{cache:'no-cache'}).then(response=>{
+fetch('static/videos/hero.json?v=20261018-perf2',{cache:'no-cache'}).then(response=>{
   if(!response.ok)throw new Error('Intro metadata unavailable');return response.json();
 }).then(media=>{
   const connection=navigator.connection;

@@ -16,15 +16,15 @@ function prepareSectionNavigation(){
   };
 }
 const finishInitialNavigation=prepareSectionNavigation();
-import {observeMedia,whenNear} from './media-loading.js?v=20261018-perf1';
+import {observeMedia,whenNear} from './media-loading.js?v=20261018-perf2';
 observeMedia();
-import { setupTaskWall } from './task-wall.js?v=20261018-perf1';
+import { setupTaskWall } from './task-wall.js?v=20261018-perf2';
 import { setupNavigation } from './navigation.js?v=20261016-results1';
 setupNavigation();
 import { setupModelComparison, MODELS } from './model-comparison.js?v=20261017-ranking3';
-import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261018-perf1';
+import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261018-perf2';
 import { renderTransferHeatmap } from './transfer-heatmap.js?v=20261017-target4';
-import { renderEvidenceChart } from './evidence-chart.js?v=20261017-layouts2';
+import { renderEvidenceChart } from './evidence-chart.js?v=20261018-perf2';
 let data, hdMedia = {}, hoverMedia = {}, layoutMedia = {}, currentFamily = 0, currentTask = 0, currentLayout = 0;
 let resultMode = 'baseline', selectedModel = 'π0.5', resultFamily = 'button', transferTarget = 'm05';
 
