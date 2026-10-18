@@ -2,24 +2,14 @@
 
 Project website for **Evo-DexBench: Benchmarking Generalization across Related Tasks for Dexterous Manipulation**.
 
-- Website: https://mint-sjtu.github.io/Evo-DexBench.io/
+- Website address: https://mint-sjtu.github.io/Evo-DexBench.io/
 - Paper: https://arxiv.org/abs/2610.21180
 - Benchmark code: https://github.com/MINT-SJTU/Evo-DexBench
 - Dataset: https://huggingface.co/collections/MINT-SJTU/evo-dexbench
 
-## Preview locally
-
-This is a static website with no build step. Run from the repository root:
-
-```sh
-python -m http.server 8000
-```
-
-Open http://localhost:8000/. Use HTTP instead of opening the HTML file directly, because the page loads modules and JSON assets.
-
 ## Publish with GitHub Pages
 
-In **Settings → Pages**, select **Deploy from a branch**, then **main** and **/ (root)**. The `.nojekyll` file keeps the site static. Subsequent pushes to `main` update the website.
+The complete website is committed to `main`. A repository administrator or maintainer must enable Pages in [Settings → Pages](https://github.com/MINT-SJTU/Evo-DexBench.io/settings/pages): select **Deploy from a branch**, then **main** and **/ (root)**, and click **Save**. GitHub will publish it at the website address above. The `.nojekyll` file keeps the site static; subsequent pushes to `main` update the website.
 
 ## Content
 
