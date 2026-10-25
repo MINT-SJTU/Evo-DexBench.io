@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-10-17",
+  "snapshot": "2026-10-25",
   "families": [
     {
       "id": "button",
@@ -457,6 +457,10 @@
     "SmolVLA": [
       0.339,
       0.495
+    ],
+    "QwenOFT": [
+      0.17200000000000001,
+      0.33166667103767394
     ]
   },
   "baselines": [
@@ -1809,6 +1813,666 @@
       ],
       "source": "https://arxiv.org/abs/2610.21180v1",
       "sourceTable": "tab:baseline-conditionwise"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m01",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.1,
+        0.02900000035762787,
+        0.05,
+        0.05,
+        0.2,
+        0.1,
+        0.1
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single1/core",
+      "checkpointSha256": "7e9d5da2568461c769811243bae50ded343d974e990e73e5550012dc3a32e019",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m02",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.72,
+        0.8220000040531158,
+        1,
+        0.4,
+        0.9,
+        0.85,
+        0.45
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single1/core",
+      "checkpointSha256": "7e9d5da2568461c769811243bae50ded343d974e990e73e5550012dc3a32e019",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m03",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.02,
+        0.03200000047683716,
+        0.05,
+        0,
+        0,
+        0,
+        0.05
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single1/core",
+      "checkpointSha256": "7e9d5da2568461c769811243bae50ded343d974e990e73e5550012dc3a32e019",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m04",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.14,
+        0.6400000202655792,
+        0,
+        0.35,
+        0.25,
+        0,
+        0.1
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single1/core",
+      "checkpointSha256": "7e9d5da2568461c769811243bae50ded343d974e990e73e5550012dc3a32e019",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m05",
+      "training": "Core + Gen joint · 1:1 sampling · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "joint11",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.01,
+        0.07000000238418579,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.05
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single1/joint11",
+      "checkpointSha256": "19c6eab6bd2ead5098f7a3cd0650d85fcacfac3874735a0b8b95d6b1c13e82f1",
+      "benchmarkVariant": "b25905b",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m06",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.01,
+        0.10000000357627868,
+        0,
+        0.05,
+        0,
+        0,
+        0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single2/core",
+      "checkpointSha256": "f102ae3ac130ca8f841daa406da468432504df3c5413982e56b7b52d55a4ed82",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m07",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.17,
+        0.2375,
+        0.2,
+        0.05,
+        0.25,
+        0.15,
+        0.2
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single2/core",
+      "checkpointSha256": "f102ae3ac130ca8f841daa406da468432504df3c5413982e56b7b52d55a4ed82",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m08",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.04,
+        0.3455000007152557,
+        0.1,
+        0,
+        0,
+        0.05,
+        0.05
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single2/core",
+      "checkpointSha256": "f102ae3ac130ca8f841daa406da468432504df3c5413982e56b7b52d55a4ed82",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m09",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.85,
+        0.8580000001192093,
+        1,
+        1,
+        1,
+        0.95,
+        0.3
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single2/core",
+      "checkpointSha256": "f102ae3ac130ca8f841daa406da468432504df3c5413982e56b7b52d55a4ed82",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m10",
+      "training": "Core + Gen joint · 1:1 sampling · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "joint11",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.21,
+        0.3990000075101852,
+        0.5,
+        0.1,
+        0.1,
+        0.25,
+        0.1
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single2/joint11",
+      "checkpointSha256": "1aac36768820ac3bd214dd7948869459404bd1c9b15890b350d504490d30e58a",
+      "benchmarkVariant": "b25905b",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m11",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0,
+        0.005,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single3/core",
+      "checkpointSha256": "bc6c0a5a9408ef02fca00af3f909b5ab136dacd51fe47284b49661569cbee6ed",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m12",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single3/core",
+      "checkpointSha256": "bc6c0a5a9408ef02fca00af3f909b5ab136dacd51fe47284b49661569cbee6ed",
+      "benchmarkVariant": "b259 + M12方法绑定修复r1",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m13",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0,
+        0.12000000178813934,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single3/core",
+      "checkpointSha256": "bc6c0a5a9408ef02fca00af3f909b5ab136dacd51fe47284b49661569cbee6ed",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m14",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single3/core",
+      "checkpointSha256": "bc6c0a5a9408ef02fca00af3f909b5ab136dacd51fe47284b49661569cbee6ed",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "m15",
+      "training": "Core + Gen joint · 1:1 sampling · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "joint11",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.0,
+        0.0025,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/single3/joint11",
+      "checkpointSha256": "8fd0eb121acd21e710ec11c82471cca5f3e76461b6428e41b0f38b1d21f8fc2d",
+      "benchmarkVariant": "b25905b",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b01",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double1/core",
+      "checkpointSha256": "8489407440a6b90227c5894696c8e5c049d1ebb1061bd662cc1a1b6f609b6e6c",
+      "benchmarkVariant": "229faec",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b02",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double1/core",
+      "checkpointSha256": "8489407440a6b90227c5894696c8e5c049d1ebb1061bd662cc1a1b6f609b6e6c",
+      "benchmarkVariant": "229faec",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b03",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double1/core",
+      "checkpointSha256": "8489407440a6b90227c5894696c8e5c049d1ebb1061bd662cc1a1b6f609b6e6c",
+      "benchmarkVariant": "229faec＋B03动态物体覆盖修复r1",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b04",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double1/core",
+      "checkpointSha256": "8489407440a6b90227c5894696c8e5c049d1ebb1061bd662cc1a1b6f609b6e6c",
+      "benchmarkVariant": "qwenoft-hand-joint-limits-r1",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b05",
+      "training": "Core + Gen joint · 1:1 sampling · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "joint11",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double1/joint11",
+      "checkpointSha256": "d31ef62c398e2fcfde7d5906fa8567e0d8ac821ae500cc29b46183a8940d14b1",
+      "benchmarkVariant": "229faec; qwenoft-hand-joint-limits-r1",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b06",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.0,
+        0.10800000160932541,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double2/core",
+      "checkpointSha256": "27a36c646415427116e6a2db795a9ca401b08b3a248125f773a04f40f71897d7",
+      "benchmarkVariant": "229faec",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b07",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.0,
+        0.06600000098347664,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double2/core",
+      "checkpointSha256": "27a36c646415427116e6a2db795a9ca401b08b3a248125f773a04f40f71897d7",
+      "benchmarkVariant": "229faec",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b08",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.0,
+        0.2680000039935112,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double2/core",
+      "checkpointSha256": "27a36c646415427116e6a2db795a9ca401b08b3a248125f773a04f40f71897d7",
+      "benchmarkVariant": "229faec",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b09",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.0,
+        0.005,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double2/core",
+      "checkpointSha256": "27a36c646415427116e6a2db795a9ca401b08b3a248125f773a04f40f71897d7",
+      "benchmarkVariant": "229faec",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b10",
+      "training": "Core + Gen joint · 1:1 sampling · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "joint11",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.01,
+        0.0820000010728836,
+        0.0,
+        0.0,
+        0.05,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double2/joint11",
+      "checkpointSha256": "034eb9c05e91a761c5662ee7f3400d2a90014018e408a20b816331d00a5d02a5",
+      "benchmarkVariant": "229faec",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b11",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.13,
+        0.27700000584125517,
+        0.05,
+        0,
+        0.2,
+        0.25,
+        0.15
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double3/core",
+      "checkpointSha256": "20e0ef251d649db773fb40470d8b42c33df10cf43d828e38e5500bd7e68072b7",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b12",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0,
+        0.22600000262260436,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double3/core",
+      "checkpointSha256": "20e0ef251d649db773fb40470d8b42c33df10cf43d828e38e5500bd7e68072b7",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b13",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0,
+        0.4060000056028366,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double3/core",
+      "checkpointSha256": "20e0ef251d649db773fb40470d8b42c33df10cf43d828e38e5500bd7e68072b7",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b14",
+      "training": "4 Core tasks · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "core",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.16,
+        0.43300001084804535,
+        0.25,
+        0.2,
+        0.1,
+        0.1,
+        0.15
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double3/core",
+      "checkpointSha256": "20e0ef251d649db773fb40470d8b42c33df10cf43d828e38e5500bd7e68072b7",
+      "benchmarkVariant": "b259",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
+    },
+    {
+      "model": "QwenOFT",
+      "task": "b15",
+      "training": "Core + Gen joint · 1:1 sampling · 100k optimizer steps",
+      "optimizerSteps": 100000,
+      "trainingStage": "joint11",
+      "protocol": "standard100 · 100 episodes",
+      "values": [
+        0.02,
+        0.1000000011920929,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json",
+      "checkpoint": "https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/tree/977e0365693cca7ef73129289a45f0340ced8154/double3/joint11",
+      "checkpointSha256": "334710719948707c849a43cc942c1dba5250978941f82b44035063ad5be331f5",
+      "benchmarkVariant": "b25905b",
+      "sourceTable": "QwenOFT fixed-revision standard100 results"
     }
   ],
   "transfer": [
@@ -2105,5 +2769,33 @@
     "m05": 50,
     "m10": 50,
     "m15": 100
+  },
+  "additionalResultSources": {
+    "QwenOFT": {
+      "repository": "Travor278/Evo-DexBench-QwenOFT-v1",
+      "revision": "977e0365693cca7ef73129289a45f0340ced8154",
+      "resultsSha256": "66991202cc1a2fb2e424c3b2e4f40294ffe5ea539c697731a3a73f5dced15135",
+      "trainingSelection": "Core checkpoint for Core tasks; matched Core:Gen1:1 joint checkpoint for Gen tasks",
+      "reportedTasks": 30,
+      "sharedComparisonTasks": [
+        "m01",
+        "m02",
+        "m03",
+        "m04",
+        "m05",
+        "m06",
+        "m07",
+        "m08",
+        "m09",
+        "m10",
+        "b11",
+        "b12",
+        "b13",
+        "b14",
+        "b15"
+      ],
+      "optimizerSteps": 100000,
+      "trainingBudgetsDifferAcrossModels": true
+    }
   }
 }
