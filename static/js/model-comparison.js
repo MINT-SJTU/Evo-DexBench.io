@@ -1,4 +1,6 @@
 export const MODELS=['π0.5','DP-T','DP-C','KineDex','SmolVLA','QwenOFT'];
+/** Public method label; stable data keys and checkpoint URLs stay unchanged. */
+export const modelLabel=model=>model==='QwenOFT'?'StarVLA-OFT':model;
 /** @typedef {{model:string,task:string,training:string,protocol:string,values:Array<number|null>,source:string|null}} BaselineRow */
 /** @typedef {{id:string,title:string,tasks:Array<{id:string,name:string,role:string}>}} TaskFamily */
 /** @typedef {{baselines:BaselineRow[],families:TaskFamily[],baselineTasks:string[]}} ResultData */
@@ -32,11 +34,11 @@ export function rankByValue(rows){
 export function setupModelComparison(root,data,{onSelectModel,metrics=[0,1,2,3,4,5,6],sortDescending=false}={}){
   let scope='shared',metric=0;const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
   const tasks=data.families.flatMap(f=>f.tasks);
-  root.innerHTML=`<div class="overview-heading"><div><span class="panel-kicker">REFERENCE BASELINES</span><h3>Compare models</h3></div><span class="coverage-badge">15 evaluated tasks</span></div><p>${sortDescending?'Models ranked by the selected metric.':'Total success rate on a common task set, followed by condition-level breakdowns.'}</p><p class="comparison-evidence">Core tasks use Core-trained checkpoints; Gen tasks use matched Core + Gen 1:1 joint training. Training budgets differ by model. <a href="https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json" target="_blank" rel="noopener">QwenOFT results and checkpoints</a>.</p><div class="overview-controls"><label>Comparison set<select class="comparison-scope"><option value="shared">Overall (15 evaluated tasks)</option>${data.families.map(f=>`<optgroup label="${escape(f.title)}">${f.tasks.map(t=>`<option value="${t.id}">${escape(t.name)}</option>`).join('')}</optgroup>`).join('')}</select></label><div class="overview-metrics" role="group" aria-label="Model comparison metric">${metrics.map(i=>{const name=i===1?'StageScore':METRICS[i];return `<button data-overview-metric="${i}" aria-pressed="${i===0}">${name}</button>`;}).join('')}</div></div><div class="overview-bars" role="group" aria-label="Model comparison"></div><p class="comparison-evidence" aria-live="polite">Select a model to explore its task-level results.</p>`;
+  root.innerHTML=`<div class="overview-heading"><div><span class="panel-kicker">REFERENCE BASELINES</span><h3>Compare models</h3></div><span class="coverage-badge">15 evaluated tasks</span></div><p>${sortDescending?'Models ranked by the selected metric.':'Total success rate on a common task set, followed by condition-level breakdowns.'}</p><p class="comparison-evidence">Core tasks use Core-trained checkpoints; Gen tasks use matched Core + Gen 1:1 joint training. Training budgets differ by model. <a href="https://huggingface.co/Travor278/Evo-DexBench-QwenOFT-v1/blob/977e0365693cca7ef73129289a45f0340ced8154/results.json" target="_blank" rel="noopener">StarVLA-OFT results and checkpoints</a> (Qwen3-VL-4B backbone).</p><div class="overview-controls"><label>Comparison set<select class="comparison-scope"><option value="shared">Overall (15 evaluated tasks)</option>${data.families.map(f=>`<optgroup label="${escape(f.title)}">${f.tasks.map(t=>`<option value="${t.id}">${escape(t.name)}</option>`).join('')}</optgroup>`).join('')}</select></label><div class="overview-metrics" role="group" aria-label="Model comparison metric">${metrics.map(i=>{const name=i===1?'StageScore':METRICS[i];return `<button data-overview-metric="${i}" aria-pressed="${i===0}">${name}</button>`;}).join('')}</div></div><div class="overview-bars" role="group" aria-label="Model comparison"></div><p class="comparison-evidence" aria-live="polite">Select a model to explore its task-level results.</p>`;
   const bars=root.querySelector('.overview-bars');
   for(const model of MODELS){
     const row=document.createElement('button');row.type='button';row.className='overview-row';row.dataset.model=model;
-    row.innerHTML=`<span class="overview-model">${model}</span><span class="overview-track"><i style="width:0%"></i></span><strong>—</strong>`;
+    row.innerHTML=`<span class="overview-model">${escape(modelLabel(model))}</span><span class="overview-track"><i style="width:0%"></i></span><strong>—</strong>`;
     row.addEventListener('click',()=>onSelectModel?.(model,scope));bars.append(row);
   }
   function render(){
@@ -49,7 +51,7 @@ export function setupModelComparison(root,data,{onSelectModel,metrics=[0,1,2,3,4
       element.classList.toggle('is-pending',row.value==null);element.classList.toggle('is-zero',row.value===0);
       bar.style.transition=reduced?'none':'width 650ms cubic-bezier(.22,1,.36,1)';bar.style.width=`${(row.value??0)*100}%`;
       element.querySelector('strong').textContent=row.value==null?'':metric===1?row.value.toFixed(3):`${(row.value*100).toFixed(1)}%`;
-      element.setAttribute('aria-label',`${row.model}: ${METRICS[metric]}, ${row.value==null?'No data':element.querySelector('strong').textContent}, ${name}`);
+      element.setAttribute('aria-label',`${modelLabel(row.model)}: ${METRICS[metric]}, ${row.value==null?'No data':element.querySelector('strong').textContent}, ${name}`);
     }
 
   }

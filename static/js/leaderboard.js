@@ -1,6 +1,6 @@
 import { setupNavigation } from './navigation.js?v=20261015-integrated1';
 setupNavigation();
-import { setupModelComparison, rankByValue } from './model-comparison.js?v=20261025-qwen1';
+import { setupModelComparison, rankByValue } from './model-comparison.js?v=20261025-starvla1';
 const $=selector=>document.querySelector(selector);
 const safeURL=value=>{try{const url=new URL(value);return url.protocol==='https:'?url.href:null;}catch{return null;}};
 
