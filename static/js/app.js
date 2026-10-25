@@ -21,7 +21,7 @@ observeMedia();
 import { setupTaskWall } from './task-wall.js?v=20261018-perf2';
 import { setupNavigation } from './navigation.js?v=20261016-results1';
 setupNavigation();
-import { setupModelComparison, MODELS } from './model-comparison.js?v=20261017-ranking3';
+import { setupModelComparison, MODELS } from './model-comparison.js?v=20261025-qwen1';
 import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261018-perf2';
 import { renderTransferHeatmap } from './transfer-heatmap.js?v=20261017-target4';
 import { renderEvidenceChart } from './evidence-chart.js?v=20261018-perf2';
@@ -120,7 +120,7 @@ function renderResults() {
   const heatmap=$('#transfer-heatmap');
   heatmap.hidden=resultMode!=='transfer';
   if (resultMode === 'baseline') {
-    $('#result-controls').innerHTML = selectControl('model-select','Policy',['π0.5','DP-T','DP-C','KineDex','SmolVLA'].map(x=>[x,x]),selectedModel) + selectControl('result-family','Task family',data.families.map(x=>[x.id,x.title]),resultFamily);
+    $('#result-controls').innerHTML = selectControl('model-select','Policy',MODELS.map(x=>[x,x]),selectedModel) + selectControl('result-family','Task family',data.families.map(x=>[x.id,x.title]),resultFamily);
     const family = data.families.find(family=>family.id === resultFamily);
     rows = family.tasks.flatMap(task => {
       const reported = data.baselines.filter(row=>row.model === selectedModel && row.task === task.id);
