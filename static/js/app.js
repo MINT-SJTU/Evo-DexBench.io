@@ -7,7 +7,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
  * @returns {()=>void} */
 function prepareSectionNavigation(){
   const hash=location.hash;
-  if(!/^#(research|principle|tasks|dataset|evaluation|results|resources|demonstrations|task-gallery|hero-stage)$/.test(hash))return()=>{};
+  if(!/^#(research|principle|tasks|dataset|evaluation|results|resources|demonstrations|task-gallery|hero-stage|highlights|faq)$/.test(hash))return()=>{};
   const controller=new AbortController();let interrupted=false;
   for(const event of ['wheel','touchstart','pointerdown','keydown'])addEventListener(event,()=>{interrupted=true;controller.abort();},{once:true,passive:true,signal:controller.signal});
   return()=>{
@@ -22,7 +22,7 @@ import { setupTaskWall } from './task-wall.js?v=20261018-perf2';
 import { setupNavigation } from './navigation.js?v=20261016-results1';
 setupNavigation();
 import { setupModelComparison, MODELS, modelLabel } from './model-comparison.js?v=20261025-starvla1';
-import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261018-perf2';
+import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261026-motion1';
 import { renderTransferHeatmap } from './transfer-heatmap.js?v=20261017-target4';
 import { renderEvidenceChart } from './evidence-chart.js?v=20261018-perf2';
 let data, hdMedia = {}, hoverMedia = {}, layoutMedia = {}, currentFamily = 0, currentTask = 0, currentLayout = 0;
@@ -74,7 +74,7 @@ function renderFamily() {
   $$('#family-tabs button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===currentFamily)));
   $('#family-title').textContent=family.title;
   $('#family-description').textContent=family.description;
-  $('#family-setup').textContent=`${family.setup} · 4 Core / 1 Gen`;
+  $('#family-setup').textContent=family.setup;
   $('#family-counter').textContent=`${String(currentFamily+1).padStart(2,'0')} / 06`;
   const card=(task,i)=>{
     const media=hdMedia[task.id] || hoverMedia[task.id];
@@ -152,7 +152,7 @@ async function init() {
   const requestedFamily=data.families.find(f=>f.tasks.some(t=>t.id===query.get('task')));if(requestedFamily)resultFamily=requestedFamily.id;
   const readJSON=async path=>{const r=await fetch(path,{cache:'no-cache'});return r.ok?r.json():{};};
   [hdMedia,hoverMedia,layoutMedia]=await Promise.all(['hd','hover','layouts'].map(name=>readJSON(`static/videos/${name}.json`)));
-  $('#family-tabs').innerHTML = data.families.map((family,i)=>`<button data-family="${i}" aria-pressed="${i===0}"><img data-src="${family.tasks[4].scenes[0]}" alt="" loading="lazy"><span><b>${escape(family.title)}</b><small>${family.setup} · 4 Core + 1 Gen</small></span></button>`).join('');
+  $('#family-tabs').innerHTML = data.families.map((family,i)=>`<button data-family="${i}" aria-pressed="${i===0}"><img data-src="${family.tasks[4].scenes[0]}" alt="" loading="lazy"><span><b>${escape(family.title)}</b><small>${family.setup}</small><small>4 Core + 1 Gen</small></span></button>`).join('');
   $$('#family-tabs button').forEach(button=>button.addEventListener('click',()=>{currentFamily=Number(button.dataset.family);currentTask=0;currentLayout=0;renderFamily();}));
   $$('.layout-controls button').forEach(button=>button.addEventListener('click',()=>{currentLayout=Number(button.dataset.layout);renderTask();}));
   $('#task-video').addEventListener('loadeddata',()=>{$('#task-media-status').hidden=true;});

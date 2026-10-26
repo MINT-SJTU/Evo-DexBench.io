@@ -97,7 +97,7 @@ export function setupEvaluation(){
   const sceneLoader=new IntersectionObserver(entries=>{
     if(!entries.some(e=>e.isIntersecting))return;
     sceneLoader.disconnect();
-    import('./protocol-scene.js?v=20261017-layouts2').then(module=>module.mountProtocolScene(diagram)).catch(()=>{diagram.querySelector('.diagram-caption').textContent='Static reference view · condition descriptions remain interactive';});
+    import('./protocol-scene.js?v=20261026-motion1').then(module=>module.mountProtocolScene(diagram)).catch(()=>{diagram.querySelector('.diagram-caption').textContent='Static reference view · condition descriptions remain interactive';});
   },{rootMargin:'300px'});sceneLoader.observe(diagram);
   setupProtocolExamples(panel);observeMedia(panel);
 }
