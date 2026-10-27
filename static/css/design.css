@@ -103,7 +103,11 @@ body{background:var(--page);color:var(--ink);font:400 16px/1.55 var(--display);l
 .hero{position:relative;display:grid;grid-template-rows:auto minmax(0,1fr);height:100svh;min-height:0;
   padding:calc(var(--header) + clamp(12px,3.4vh,38px)) var(--gut) clamp(12px,2.6vh,26px);background:#fff;overflow:hidden;isolation:isolate}
 .hero-intro-copy{position:static;inset:auto;z-index:auto;transform:none;margin:0 auto clamp(16px,3vh,32px);text-align:center;color:var(--ink);text-shadow:none;pointer-events:auto}
-.hero-intro-copy>.hero-kicker{margin:0 0 clamp(6px,1.2vh,12px);font:600 clamp(16px,1.2vw,20px)/1.2 var(--display);letter-spacing:-.015em;color:var(--ink);opacity:1}
+/* Brand lockup: the hand-and-cube mark beside a warm wordmark (the colours of the cube and the lamp). */
+.hero-intro-copy>.hero-brand{display:inline-flex;align-items:center;gap:.36em;margin:0 0 clamp(8px,1.8vh,18px);font:700 clamp(24px,min(2.3vw,4vh),38px)/1 var(--display);letter-spacing:-.035em}
+.hero-brand img{flex:none;width:1.42em;height:1.42em}
+.brand-text,.hero-brand span{background:linear-gradient(100deg,var(--accent) 10%,#de8a3e 95%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
 .hero-intro-copy h1{margin:0;font:700 clamp(38px,min(5vw,7.6vh),76px)/1.03 var(--display);letter-spacing:-.045em;color:var(--ink);text-wrap:balance}
 .hero-intro-copy>.hero-sub{max-width:40em;margin:clamp(8px,1.6vh,16px) auto 0;font:400 clamp(16px,min(1.3vw,2.2vh),21px)/1.4 var(--display);letter-spacing:-.012em;color:#424245}
 .hero-frame{position:relative;min-height:0;display:grid;place-items:center;container-type:size}
@@ -113,53 +117,60 @@ body{background:var(--page);color:var(--ink);font:400 16px/1.55 var(--display);l
 [data-quality=portrait] .hero-film{aspect-ratio:4/5;width:min(100cqw,calc(100cqh*4/5))}
 .hero-still,#hero-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .hero-scrim{display:none}
-.hero-bottom,.hero-bottom.wrap{position:absolute;left:50%;right:auto;bottom:clamp(10px,2vh,18px);z-index:3;transform:translateX(-50%);width:max-content;max-width:calc(100% - 20px);
-  display:flex;align-items:center;justify-content:center;gap:8px;padding:0;border-radius:0;background:none;box-shadow:none;
-  -webkit-backdrop-filter:none;backdrop-filter:none;color:var(--ink);text-shadow:none}
-.hero-pill,.intro-skip{background:rgba(255,255,255,.84);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
-  box-shadow:0 0 0 1px rgba(0,0,0,.05),0 10px 28px rgba(0,0,0,.14)}
-.hero-pill{display:flex;align-items:center;gap:20px;min-width:0;padding:6px 6px 6px 20px;border-radius:999px}
-.hero-caption{display:flex;flex-direction:column;gap:1px;min-width:0;margin:0;padding:0;border:0;font:600 14px/1.3 var(--display);letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
-.scroll-cue{display:block;margin:0;font:400 13px/1.3 var(--display);color:var(--ink2)}
-.hero-paper{display:inline-flex;align-items:center;height:40px;padding:0 20px;border-radius:999px;background:var(--accent);color:#fff;font:500 15px/1 var(--display);transition:background .2s}
-.hero-paper:hover{background:var(--accent-strong)}
-.intro-skip{display:grid;place-items:center;flex:none;width:44px;height:44px;padding:0;border-radius:50%;color:var(--ink);opacity:1;text-decoration:none;transition:background .2s}
-.intro-skip:hover{background:#fff}
+/* The caption sits on a soft scrim inside the film, so it reads as part of the footage rather than a widget on top. */
+.hero-bottom,.hero-bottom.wrap{position:absolute;left:0;right:0;bottom:0;z-index:3;transform:none;width:auto;max-width:none;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:clamp(56px,10vh,110px) clamp(18px,2.2vw,32px) clamp(16px,2.6vh,28px);
+  border-radius:0;background:linear-gradient(to top,rgba(0,0,0,.52),rgba(0,0,0,.2) 55%,transparent);box-shadow:none;
+  -webkit-backdrop-filter:none;backdrop-filter:none;color:#fff;text-shadow:none;pointer-events:none}
+.hero-bottom>*{pointer-events:auto}
+.hero-caption{display:flex;flex-direction:column;gap:3px;min-width:0;margin:0;padding:0;border:0;font:600 clamp(15px,1.15vw,18px)/1.3 var(--display);letter-spacing:-.01em;color:#fff}
+.scroll-cue{display:block;margin:0;font:400 clamp(13px,.95vw,15px)/1.35 var(--display);color:rgba(255,255,255,.78)}
+.intro-skip{display:grid;place-items:center;flex:none;width:44px;height:44px;padding:0;border-radius:50%;color:#fff;opacity:1;text-decoration:none;
+  background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.3);transition:background .2s}
+.intro-skip:hover{background:rgba(255,255,255,.3)}
 .intro-skip svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:600px){
   .hero-intro-copy h1{font-size:min(7.8vw,40px)}
-  .hero-caption>strong{display:none}
-  .hero-pill{gap:12px;padding-left:16px}
-  .hero-paper{height:36px;padding:0 16px;font-size:14px}
-  .intro-skip{width:40px;height:40px}
+  .hero-intro-copy>.hero-brand{font-size:22px}
+  .hero-caption{font-size:14px}
+  .scroll-cue{font-size:12.5px}
+  .intro-skip{width:38px;height:38px}
 }
 
 /* ---------- paper title and authors ---------- */
-.research-reveal{padding:clamp(56px,9vh,96px) 0 clamp(52px,8vh,84px)}
+.research-reveal{padding:clamp(64px,10vh,112px) 0 clamp(56px,9vh,96px)}
 .research-reveal:before,.research-reveal:after{display:none}
-.research-title .eyebrow{justify-content:center;margin-bottom:14px}
-.research-title h2{margin:0 auto;font:600 clamp(26px,2.5vw,38px)/1.16 var(--display);letter-spacing:-.028em;color:var(--ink)}
+.research-title>.venue-chip{display:inline-flex;max-width:none;align-items:center;gap:8px;margin:0 0 20px;padding:7px 14px;border-radius:999px;background:var(--accent-soft);
+  font:600 13px/1 var(--display);letter-spacing:.02em;color:var(--accent)}
+.research-title>.venue-chip:before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+.research-title h2{max-width:24em;margin:0 auto;font:700 clamp(28px,2.9vw,46px)/1.12 var(--display);letter-spacing:-.034em;color:var(--ink);text-wrap:balance}
 .research-title h2 br{display:none}
-@media(min-width:1069px){.research-title h2 br{display:inline}}
-.research-people{margin-top:26px}
-.author-list{font:400 clamp(15px,1.15vw,17px)/1.85 var(--display);color:var(--ink)}
-.author-list sup{font-size:.62em;color:var(--accent)}
+@media(min-width:1069px){.research-title h2{max-width:none}.research-title h2 br{display:inline}}
+.research-people{margin-top:clamp(24px,4vh,36px)}
+.author-list{font:400 clamp(16px,1.2vw,18.5px)/1.9 var(--display);color:var(--ink)}
+.author-list sup{margin-left:2px;font-size:.6em;color:var(--accent)}
 .author-list>span:not(.person){display:none}
-.author-list .person{display:inline-block;margin:0 9px;white-space:nowrap}
-.research-title>.eyebrow{font:600 12px/1.3 var(--display);letter-spacing:.1em;color:var(--accent)}
-.affiliations{margin-top:10px;gap:2px 20px;font:400 14px/1.7 var(--display);color:var(--ink2)}
-.contribution{margin-top:6px;font:400 12.5px/1.6 var(--display);color:var(--ink3)}
-.publication-links{gap:10px;margin-top:28px}
+.author-list .person{display:inline-block;margin:0 10px;white-space:nowrap}
+.affiliations{margin-top:12px;gap:2px 22px;font:400 clamp(14px,1vw,15px)/1.7 var(--display);color:var(--ink2)}
+.affiliations sup{color:var(--accent)}
+.contribution{margin-top:6px;font:400 13px/1.6 var(--display);color:var(--ink3)}
+.publication-links{gap:10px;margin-top:clamp(28px,4.4vh,40px)}
 .publication-links a{
-  height:40px;padding:0 18px;gap:8px;border:1px solid var(--hair);border-radius:999px;background:#fff;
-  font:500 14.5px/1 var(--display);color:var(--ink);transition:background .2s,border-color .2s
+  height:46px;padding:0 22px;gap:9px;border:0;border-radius:999px;background:var(--band);
+  font:500 15.5px/1 var(--display);color:var(--ink);transition:background .2s,transform .2s
 }
-.publication-links a:hover{background:var(--band);border-color:#b7b7bd;color:var(--ink);transform:none}
-.publication-links a.is-primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.publication-links a:hover{background:var(--fill);color:var(--ink);transform:translateY(-1px)}
+.publication-links a.is-primary{background:var(--ink);color:#fff}
 .publication-links a.is-primary:hover{background:#000;color:#fff}
 .publication-links a.is-primary small{color:rgba(255,255,255,.62)}
-.publication-links .link-icon{width:16px;height:16px}
-.publication-links small{font-size:11.5px;color:var(--ink3)}
+.publication-links .link-icon{width:17px;height:17px}
+.publication-links small{font-size:12px;color:var(--ink3)}
+@media(max-width:600px){
+  .research-title h2{font-size:clamp(23px,6.4vw,28px)}
+  .author-list .person{margin:0 7px}
+  .publication-links a{height:42px;padding:0 17px;font-size:14.5px}
+}
 
 /* ---------- highlights ---------- */
 .highlights{padding:var(--sec) 0 calc(var(--sec)*.75);overflow-x:clip}
