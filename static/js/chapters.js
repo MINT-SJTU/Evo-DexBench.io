@@ -1,35 +1,21 @@
 import {observeMedia,whenNear} from './media-loading.js?v=20261018-perf2';
 import { CONDITION_COPY } from './protocol-parameters.js?v=20261027-calm1';
 export function setupCoreComparison({reducedMotion}) {
+  // Two Core sources (related and different family) beside the Gen target; all three play while in view.
   const panel=document.querySelector('#core-comparison');
-  const source=document.querySelector('#source-demo'),target=document.querySelector('#target-demo');
-  let visible=false,paused=reducedMotion,mode='matched';
-  const sources={
-    matched:{video:'static/videos/hero-selected.mp4',poster:'static/videos/hero-selected-unlit.jpg',name:'Lamp button',family:'Button-driven',note:'Both tasks press a localized control to change a device’s state.'},
-    different:{video:'static/videos/showcase/m06.mp4',poster:'static/videos/showcase/m06.jpg',name:'Faucet handle',family:'Rotational manipulation',note:'A rotation task from another family. Does its experience still help?'}
-  };
+  const videos=[...panel.querySelectorAll('video[data-video]')];
+  let visible=false,paused=reducedMotion;
   const update=()=>{
-    for(const video of [source,target]){
+    for(const video of videos){
       if(!visible||paused||document.hidden){video.pause();continue;}
-      if(!video.getAttribute('src'))video.src=video===source?sources[mode].video:'static/videos/showcase/m05.mp4';
+      if(!video.getAttribute('src'))video.src=video.dataset.video;
       video.play().catch(()=>{});
     }
   };
-  [source,target].forEach(video=>{
+  videos.forEach(video=>{
     video.addEventListener('playing',()=>{if(paused||!visible){video.pause();return;}video.classList.add('is-playing');});
     video.addEventListener('error',()=>video.classList.remove('is-playing'));
   });
-  panel.querySelectorAll('[data-relatedness]').forEach(button=>button.addEventListener('click',()=>{
-    mode=button.dataset.relatedness;source.pause();source.classList.remove('is-playing');source.removeAttribute('src');source.load();
-    document.querySelector('#source-poster').src=sources[mode].poster;
-    delete document.querySelector('#source-poster').dataset.src;
-    document.querySelector('#source-name').textContent=sources[mode].name;
-    document.querySelector('#source-family').textContent=sources[mode].family;
-    document.querySelector('#relatedness-note').textContent=sources[mode].note;
-    panel.dataset.relatedness=mode;
-    panel.querySelectorAll('[data-relatedness]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
-    update();
-  }));
   matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',event=>{paused=event.matches;update();});
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;update();},{threshold:.35}).observe(panel);
   document.addEventListener('visibilitychange',update);update();

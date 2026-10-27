@@ -13,11 +13,11 @@
   <link rel="stylesheet" href="static/css/evidence.css?v=20261015-smooth1">
   <link rel="stylesheet" href="static/css/publication.css?v=20261015-scroll360">
   <link rel="stylesheet" href="static/css/refinement.css?v=20261018-frames1">
-  <link rel="stylesheet" href="static/css/design.css?v=20261027-calm1">
+  <link rel="stylesheet" href="static/css/design.css?v=20261027-calm2">
   <link rel="preload" href="static/fonts/google-sans-flex-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="modulepreload" href="static/js/intro-frames.js?v=20261027-card1">
   <script src="static/js/intro-entry.js?v=20261027-card1" type="module"></script>
-  <script src="static/js/app.js?v=20261027-calm1" type="module"></script>
+  <script src="static/js/app.js?v=20261027-calm2" type="module"></script>
   <script src="static/js/design.js?v=20261027-calm1" type="module"></script>
 </head>
 <body>
@@ -59,9 +59,7 @@
     <section id="principle" class="section wrap">
       <header class="story-head"><h2 class="hx rv">Same interaction. New task.</h2><p class="lede rv">Core–Gen asks whether a policy can reuse what related tasks share.</p></header>
       <div class="comparison-panel" id="core-comparison">
-        <div class="comparison-top"><div class="segmented" role="group" aria-label="Source task relatedness"><button data-relatedness="matched" aria-pressed="true">Related Core</button><button data-relatedness="different" aria-pressed="false">Different family</button></div></div>
-        <div class="comparison-films"><figure><div class="comparison-media"><img id="source-poster" data-src="static/videos/hero-selected-unlit.webp" alt="Lamp button source task"><video id="source-demo" muted loop playsinline preload="none" aria-label="Source task demonstration"></video><span class="film-role">CORE / SOURCE</span></div><figcaption><div><strong id="source-name">Lamp button</strong><span id="source-family">Button-driven</span></div><span class="demo-budget">50 <small>demos</small></span></figcaption></figure><div class="comparison-arrow" aria-hidden="true">→</div><figure><div class="comparison-media"><img data-src="static/videos/showcase/m05.jpg" alt="Display power button target task"><video id="target-demo" muted loop playsinline preload="none" aria-label="Gen target demonstration"></video><span class="film-role target">GEN / TARGET</span></div><figcaption><div><strong>Display power button</strong><span>Held-out Gen target</span></div><span class="demo-budget accent">8 <small>demos</small></span></figcaption></figure></div>
-        <div class="comparison-bottom"><p id="relatedness-note">Both tasks press a localized control to change a device’s state.</p></div>
+        <div class="comparison-films"><figure class="is-related"><div class="comparison-media"><img data-src="static/videos/hero-selected-unlit.webp" alt="Lamp button: related Core task"><video data-video="static/videos/hero-selected.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="film-role">Related Core</span></div><figcaption><strong>Lamp button</strong><span>Button-driven · <b>50</b> demos</span></figcaption></figure><div class="comparison-arrow" aria-hidden="true">→</div><figure class="is-target"><div class="comparison-media"><img data-src="static/videos/showcase/m05.jpg" alt="Display power button: held-out Gen target"><video data-video="static/videos/showcase/m05.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="film-role target">Gen target</span></div><figcaption><strong>Display power button</strong><span>Button-driven · <b>8</b> demos</span></figcaption></figure><div class="comparison-arrow is-far" aria-hidden="true">←</div><figure class="is-different"><div class="comparison-media"><img data-src="static/videos/showcase/m06.jpg" alt="Faucet handle: Core task from a different family"><video data-video="static/videos/showcase/m06.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="film-role">Different family</span></div><figcaption><strong>Faucet handle</strong><span>Rotational · <b>50</b> demos</span></figcaption></figure></div>
       </div>
     </section>
     <section id="tasks" class="task-section section">
