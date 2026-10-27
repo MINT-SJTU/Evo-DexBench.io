@@ -10,8 +10,11 @@ export function setupScrollIntro({reducedMotion,media}){
   let input=0,current=0,shown=-1,raf=0,lastTick=0,started=false,engaged=false,failed=false;
   let touchY=null,touchOwned=false,loadTimer=0,controller=null,epoch=0,returningHome=false;
   const boundary=()=>stage.offsetTop+stage.offsetHeight-pin.offsetHeight;
-  const skip=document.createElement('a');skip.className='intro-skip';skip.href='#research';skip.textContent='Skip intro';
+  const film=canvas.parentElement,skip=document.createElement('a');
+  skip.className='intro-skip';skip.href='#research';skip.title='Skip intro';skip.setAttribute('aria-label','Skip intro');
+  skip.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v10M3.5 8.5 8 13l4.5-4.5"/></svg>';
   stage.querySelector('.hero-bottom').append(skip);
+  const cueText={idle:'Scroll to switch on the lamp.',loading:'Preparing the demonstration…',done:'Explore the benchmark below.'};
 
   function setActive(value){active=value;stage.classList.toggle('intro-scrubbing',value&&!reducedMotion);stage.dataset.holding=String(value&&engaged);}
   function release(handoff){
@@ -21,9 +24,11 @@ export function setupScrollIntro({reducedMotion,media}){
     if(handoff&&engaged)scrollTo({top:boundary(),behavior:'instant'});
   }
   function resize(){
-    const dpr=Math.min(devicePixelRatio||1,2),limit=compact?960:1440;
-    canvas.width=Math.min(limit,Math.round(pin.clientWidth*dpr));
-    canvas.height=Math.round(canvas.width*pin.clientHeight/pin.clientWidth);
+    // The canvas matches the framed card, so frames are drawn near their native size.
+    const dpr=Math.min(devicePixelRatio||1,2),limit=compact?960:1440,box=film.getBoundingClientRect();
+    if(!box.width||!box.height)return;
+    canvas.width=Math.min(limit,Math.round(box.width*dpr));
+    canvas.height=Math.round(canvas.width*box.height/box.width);
     shown=-1;draw(Math.round(current));
   }
   function draw(index){
@@ -36,7 +41,7 @@ export function setupScrollIntro({reducedMotion,media}){
     stage.dataset.scrollProgress=(index/last).toFixed(3);
     stage.style.setProperty('--lamp-light',String(clamp((index/last*media.duration-media.light_on_seconds)/(media.completion_seconds-media.light_on_seconds),0,1)));
     if(index===last){
-      cue.textContent='Explore the benchmark ↓';
+      cue.textContent=cueText.done;
       if(active&&input>=distance)requestAnimationFrame(()=>{if(shown===last&&input>=distance)release(true);});
     }
     return true;
@@ -73,7 +78,7 @@ export function setupScrollIntro({reducedMotion,media}){
   function reset(){
     if(reducedMotion||failed)return;
     input=0;current=0;engaged=false;returningHome=scrollY>stage.offsetTop+2;
-    setActive(true);cue.textContent='A short scroll turns on the light ↓';load();schedule();
+    setActive(true);cue.textContent=cueText.idle;load();schedule();
   }
   addEventListener('wheel',event=>{
     if(!active||event.ctrlKey||event.target.closest('input,select,textarea,dialog'))return;
@@ -108,11 +113,11 @@ export function setupScrollIntro({reducedMotion,media}){
   },{passive:true});
   function fail(){
     if(failed)return;failed=true;clearTimeout(loadTimer);controller?.abort();
-    stage.dataset.mediaState='error';release(false);cue.textContent='Explore the benchmark ↓';
+    stage.dataset.mediaState='error';release(false);cue.textContent=cueText.done;
   }
   async function load(){
     if(started||reducedMotion)return;started=true;controller=new AbortController();
-    stage.dataset.mediaState='loading';cue.textContent='Preparing the lamp demonstration…';
+    stage.dataset.mediaState='loading';cue.textContent=cueText.loading;
     loadTimer=setTimeout(fail,15000);let cursor=0;
     const preview=Array.from({length:Math.ceil(count/4)},(_,i)=>i*4);
     if(preview.at(-1)!==last)preview.push(last);
@@ -127,13 +132,13 @@ export function setupScrollIntro({reducedMotion,media}){
         }
       }));
       clearTimeout(loadTimer);stage.dataset.mediaState='ready';
-      if(shown!==last)cue.textContent='A short scroll turns on the light ↓';schedule();
+      if(shown!==last)cue.textContent=cueText.idle;schedule();
     }catch(error){if(error.name!=='AbortError')console.warn('Intro sequence unavailable',error);fail();}
   }
   setActive(active);resize();
-  if(reducedMotion){setActive(false);stage.classList.remove('motion-ready');cue.textContent='Explore the benchmark below ↓';}
+  if(reducedMotion){setActive(false);stage.classList.remove('motion-ready');cue.textContent=cueText.done;}
   else if(active)load();
-  addEventListener('resize',resize,{passive:true});
+  new ResizeObserver(resize).observe(film);
   document.addEventListener('visibilitychange',()=>{lastTick=0;if(!document.hidden)schedule();});
   addEventListener('pagehide',event=>{
     cancelAnimationFrame(raf);raf=0;lastTick=0;

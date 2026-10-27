@@ -21,10 +21,10 @@ observeMedia();
 import { setupTaskWall } from './task-wall.js?v=20261018-perf2';
 import { setupNavigation } from './navigation.js?v=20261016-results1';
 setupNavigation();
-import { setupModelComparison, MODELS, modelLabel } from './model-comparison.js?v=20261025-starvla1';
-import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261026-motion1';
-import { renderTransferHeatmap } from './transfer-heatmap.js?v=20261017-target4';
-import { renderEvidenceChart } from './evidence-chart.js?v=20261018-perf2';
+import { setupModelComparison, MODELS, modelLabel } from './model-comparison.js?v=20261027-calm1';
+import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261027-calm1';
+import { renderTransferHeatmap } from './transfer-heatmap.js?v=20261027-calm1';
+import { renderEvidenceChart } from './evidence-chart.js?v=20261027-calm1';
 let data, hdMedia = {}, hoverMedia = {}, layoutMedia = {}, currentFamily = 0, currentTask = 0, currentLayout = 0;
 let resultMode = 'baseline', selectedModel = 'π0.5', resultFamily = 'button', transferTarget = 'm05';
 
@@ -74,8 +74,6 @@ function renderFamily() {
   $$('#family-tabs button').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===currentFamily)));
   $('#family-title').textContent=family.title;
   $('#family-description').textContent=family.description;
-  $('#family-setup').textContent=family.setup;
-  $('#family-counter').textContent=`${String(currentFamily+1).padStart(2,'0')} / 06`;
   const card=(task,i)=>{
     const media=hdMedia[task.id] || hoverMedia[task.id];
     const poster=media?.poster || task.scenes[0];
@@ -126,7 +124,7 @@ function renderResults() {
       const reported = data.baselines.filter(row=>row.model === selectedModel && row.task === task.id);
       return reported.length ? reported : [{model:selectedModel, task:task.id, training:task.role,values:Array(7).fill(null),protocol:'Not yet reported',source:null}];
     });
-    $('#result-context').textContent = 'Total success rate across five evaluation conditions. Stage scores use a normalized 0–1 scale.';
+    $('#result-context').textContent = '';
     $('#model-select').addEventListener('change',event=>{selectedModel=event.target.value;renderResults();});
     $('#result-family').addEventListener('change',event=>{resultFamily=event.target.value;renderResults();});
   } else if (resultMode === 'transfer') {
@@ -175,7 +173,7 @@ async function init() {
     currentFamily=data.families.findIndex(family=>family.tasks.some(task=>task.id===id));
     renderFamily();openTask(data.families[currentFamily].tasks.findIndex(task=>task.id===id),true);
   });
-  whenNear($('#task-gallery'),()=>setupTaskWall({families:data.families,reducedMotion}).catch(error=>{console.error(error);document.querySelector('.task-wall-footer>p').textContent='Preview unavailable. Explore the task families below.';}));
+  whenNear($('#task-gallery'),()=>setupTaskWall({families:data.families,reducedMotion}).catch(error=>{console.error(error);$('#task-gallery').classList.add('is-unavailable');}));
   renderFamily();renderResults();
   setupModelComparison($('#model-overview'),data,{onSelectModel:(model,scope)=>{selectedModel=model;resultMode='baseline';if(scope!=='shared')resultFamily=data.families.find(f=>f.tasks.some(t=>t.id===scope)).id;renderResults();document.querySelector('.results-detail-heading').scrollIntoView({behavior:reducedMotion?'instant':'smooth',block:'start'});}});
   setupCoreComparison({reducedMotion});setupEvaluation();

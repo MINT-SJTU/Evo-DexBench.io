@@ -15,7 +15,7 @@ export function renderEvidenceChart(options){
   if(!bound){
     bound=true;
     $('.plot-heading').insertAdjacentHTML('afterend',`<div class="chart-toolbar"><div class="chart-conditions" role="group" aria-label="Result condition">${[0,2,3,4,5,6].map(i=>`<button data-result-condition="${i}" aria-pressed="${i===0}">${names[i]}</button>`).join('')}</div><label class="chart-order">Order <select id="chart-sort"><option value="source">Task / setting</option><option value="value">Value ↓</option></select></label></div><div class="chart-legend"><span><i></i> <b id="chart-series-label">Reported success rate</b></span><span id="nominal-legend" hidden><i class="ghost-key"></i> Nominal reference</span></div>`);
-    root.insertAdjacentHTML('afterend','<p id="chart-inspect" class="chart-inspect" aria-live="polite">Select a bar to inspect its value.</p><a id="chart-run" class="text-link" hidden target="_blank" rel="noopener">View paper v1 </a>');
+    root.insertAdjacentHTML('afterend','<p id="chart-inspect" class="chart-inspect" aria-live="polite"></p><a id="chart-run" class="text-link" hidden target="_blank" rel="noopener">View paper v1 </a>');
     root.setAttribute('role','group');
     document.querySelectorAll('[data-plot-metric]').forEach(b=>b.addEventListener('click',()=>current.onMetric(Number(b.dataset.plotMetric))));
     document.querySelectorAll('[data-result-condition]').forEach(b=>b.addEventListener('click',()=>{condition=Number(b.dataset.resultCondition);renderEvidenceChart(current);}));
@@ -23,7 +23,7 @@ export function renderEvidenceChart(options){
     new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)&&!entered){entered=true;renderEvidenceChart(current);}},{threshold:.25}).observe(root);
   }
   const stage=metric===1;
-  if(options.resetCondition){$('#chart-inspect').textContent='Select a bar to inspect its value.';$('#chart-run').hidden=true;for(const node of nodes.values()){node.classList.remove('is-inspected');node.setAttribute('aria-pressed','false');}}
+  if(options.resetCondition){$('#chart-inspect').textContent='';$('#chart-run').hidden=true;for(const node of nodes.values()){node.classList.remove('is-inspected');node.setAttribute('aria-pressed','false');}}
   const index=stage?1:condition;
   const comparison=index>=3;
   $('.chart-conditions').hidden=stage||mode==='transfer';

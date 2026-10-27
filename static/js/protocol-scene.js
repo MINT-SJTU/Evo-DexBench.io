@@ -1,5 +1,5 @@
 import { loadRecordedFaucet } from './recorded-faucet.js?v=20261016-studio1';
-import { PROTOCOL, cameraExample } from './protocol-parameters.js?v=20261016-studio1';
+import { PROTOCOL, cameraExample } from './protocol-parameters.js?v=20261027-calm1';
 import * as T from './vendor/three.module.js';
 import { createCameraHousing } from './camera-model.js?v=20261014-publication1';
 
@@ -162,14 +162,12 @@ export async function mountProtocolScene(root){
   const viewEye=views[0].eye.clone(),viewLook=views[0].look.clone();
 
   const canvasWrap=document.createElement('div');canvasWrap.className='protocol-webgl';canvasWrap.append(renderer.domElement);
-  canvasWrap.insertAdjacentHTML('beforeend','<div class="scene-observation"><span>CAMERA VIEW</span></div><div class="scene-hud" aria-hidden="true"></div>');
-  root.replaceChildren();
-  root.insertAdjacentHTML('beforeend','<div class="scene-heading"><span>M06 · CONDITION DEMONSTRATIONS</span><button class="scene-replay" aria-label="Replay selected parameter change">↻</button></div>');
-  root.append(canvasWrap);
+  canvasWrap.insertAdjacentHTML('beforeend','<div class="scene-observation"><span>CAMERA VIEW</span></div><div class="scene-hud" aria-hidden="true"></div><button class="scene-replay" type="button" aria-label="Replay this condition" title="Replay">↻</button>');
+  root.replaceChildren(canvasWrap);
   // Keep the visual panel clear; the parameter readout belongs with its explanation.
   stage.querySelector('.protocol-copy').insertAdjacentHTML('beforeend','<div class="scene-info"><span class="scene-state"></span><span class="scene-annotation"></span></div>');
   const annotation=stage.querySelector('.scene-annotation');
-  const pause=root.querySelector('button'),state=stage.querySelector('.scene-state'),hud=canvasWrap.querySelector('.scene-hud');
+  const pause=canvasWrap.querySelector('.scene-replay'),state=stage.querySelector('.scene-state'),hud=canvasWrap.querySelector('.scene-hud');
   let visible=false,raf=0,last=0,width=1,height=1,condition=0,transition=1,motionTime=0,values={camera:0,light:0,space:0,physical:0};
   const shown={camera:0,light:0,space:0,physical:0,nominal:1};
   const labels=['Reference faucet task','Interaction-camera viewpoint','Illumination · geometry fixed','Passive handle joint','Robot base + initial handle state'];

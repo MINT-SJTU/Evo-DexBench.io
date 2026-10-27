@@ -23,10 +23,11 @@ export function cameraExample(eye,target,amount){
   return{target:shifted,eye:[shifted[0]+horizontal*Math.cos(side)*s,shifted[1]+nextDistance*Math.sin(height)*s,shifted[2]-horizontal*Math.sin(side)*s],fovDelta:amount*e.fovDeg};
 }
 
+/** Short copy for the condition pills: a bold lead and one line of bounds. */
 export const CONDITION_COPY=[
-  {name:'Nominal',description:'Use the reference faucet task. Rotate its handle toward the open position; the goal and scoring remain fixed across conditions.',change:'Reference faucet configuration',keep:'Handle-opening goal and scoring',example:'Faucet handle task. Nominal target-joint friction is 0.15 and damping is 1.50. The sink, handle and robot visuals are exported together from the task scene using the recorded approach motion.'},
-  {name:'Camera',description:'Apply bounded changes to the interaction-camera viewpoint, look-at target and field of view. The faucet and robot remain in place.',change:'Camera eye, target and FOV',keep:'Faucet, robot pose and scoring',example:'Shown: side +3°, elevation +2°, distance +4%, FOV +2°. Interaction limits: ±5°, ±4°, ±8%, target ±3 cm per axis, FOV ±5°.'},
-  {name:'Lighting',description:'Resample ambient and direct-light intensity and a bounded color shift. The camera, faucet and robot stay fixed.',change:'Illumination intensity and color',keep:'Camera pose and task geometry',example:'Shown: ambient ×0.75, direct light ×1.20, color shift +0.04. Ranges: ×0.70–1.30, ×0.75–1.25 and −0.08–0.08.'},
-  {name:'Physical',description:'Contact and rotate the passive faucet handle. Hand and handle motion come from the same replay; the inset shows their interaction.',change:'Handle joint friction and damping',keep:'Faucet placement and opening goal',example:'Replay dynamics: friction 0.15, damping 1.50. Evaluation ranges: friction 0.13–0.30, damping 1.41–1.55; stiffness remains zero. This contact demonstration is not a new evaluation result.'},
-  {name:'Spatial',description:'Change the robot base pose and the handle’s initial opening. The sink stays fixed, matching the faucet task’s spatial definition.',change:'Robot base pose and initial handle state',keep:'Sink position, task goal and scoring',example:'Shown: robot forward +1 cm, side −1 cm, yaw +1°; handle initially 15% open. Ranges: forward/side ±2 cm, yaw ±2°, initial opening 0–20% of joint range.'}
+  {name:'Nominal',lead:'The reference setup.',detail:'Rotate the faucet handle open. Goal and scoring never change.'},
+  {name:'Camera',lead:'The viewpoint shifts.',detail:'Side ±5°, elevation ±4°, distance ±8%, field of view ±5°.'},
+  {name:'Lighting',lead:'The light changes.',detail:'Ambient ×0.70–1.30, direct ×0.75–1.25, with a slight colour shift.'},
+  {name:'Physical',lead:'The handle feels different.',detail:'Joint friction 0.13–0.30 and damping 1.41–1.55.'},
+  {name:'Spatial',lead:'The layout moves.',detail:'Robot base ±2 cm and ±2° yaw; the handle starts up to 20% open.'}
 ];
