@@ -3,9 +3,11 @@ import { GLTFLoader } from './vendor/GLTFLoader.js';
 
 /** Load actual task visuals in their recorded shared world coordinate system. */
 export async function loadRecordedFaucet(){
-  const manifest=await fetch('static/models/scene/faucet/manifest.json').then(r=>r.json());
+  // Every file is requested at once instead of one after another.
+  const json=(name,label)=>fetch(`static/models/scene/faucet/${name}.json`).then(r=>{if(!r.ok)throw new Error(`${label} unavailable`);return r.json();});
   const loader=new GLTFLoader();
-  const [robotFile,fixtureFile]=await Promise.all(['robot','fixture'].map(name=>loader.loadAsync(`static/models/scene/faucet/${name}.glb`)));
+  const [manifest,robotFile,fixtureFile,motion,contactMotion]=await Promise.all([json('manifest','Scene manifest'),
+    ...['robot','fixture'].map(name=>loader.loadAsync(`static/models/scene/faucet/${name}.glb`)),json('motion','Recorded motion'),json('contact-motion','Contact motion')]);
   const origin=new T.Vector3(...manifest.origin),scale=manifest.scale;
   const rotation=new T.Matrix4().makeRotationX(-Math.PI/2);
   const transform=new T.Matrix4().makeScale(scale,scale,scale).multiply(rotation).multiply(new T.Matrix4().makeTranslation(-origin.x,-origin.y,-origin.z));
@@ -20,8 +22,6 @@ export async function loadRecordedFaucet(){
     });return group;
   }
   const robot=bake(robotFile.scene,base),fixture=bake(fixtureFile.scene,handlePoint);
-  const motion=await fetch('static/models/scene/faucet/motion.json').then(r=>{if(!r.ok)throw new Error('Recorded motion unavailable');return r.json();});
-  const contactMotion=await fetch('static/models/scene/faucet/contact-motion.json').then(r=>{if(!r.ok)throw new Error('Contact motion unavailable');return r.json();});
   const animatedLinks=motion.links.map(name=>{
     const group=new T.Group();group.name=name;
     for(const mesh of [...robot.children])if(mesh.name.replace(/^robot_/,'').replace(/_\d+$/,'')===name){robot.remove(mesh);group.add(mesh);}

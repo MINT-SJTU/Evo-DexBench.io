@@ -1,15 +1,17 @@
-import {observeMedia,whenNear} from './media-loading.js?v=20261018-perf2';
+import {observeMedia,whenNear,whenPlayable} from './media-loading.js?v=20261030-load1';
 import { CONDITION_COPY } from './protocol-parameters.js?v=20261027-calm1';
 export function setupCoreComparison({reducedMotion}) {
   // Two Core sources (related and different family) beside the Gen target; all three play while in view.
   const panel=document.querySelector('#core-comparison');
   const videos=[...panel.querySelectorAll('video[data-video]')];
   let visible=false,paused=reducedMotion;
+  const ready=new Map();
   const update=()=>{
     for(const video of videos){
       if(!visible||paused||document.hidden){video.pause();continue;}
-      if(!video.getAttribute('src'))video.src=video.dataset.video;
-      video.play().catch(()=>{});
+      if(!ready.has(video)){video.preload='auto';video.src=video.dataset.video;ready.set(video,whenPlayable([video],()=>visible&&!paused&&!document.hidden));}
+      // Each clip keeps its poster until it can play through without stalling.
+      ready.get(video).then(()=>{if(visible&&!paused&&!document.hidden)video.play().catch(()=>{});},()=>{});
     }
   };
   videos.forEach(video=>{
@@ -50,7 +52,7 @@ export function setupEvaluation(){
   const sceneLoader=new IntersectionObserver(entries=>{
     if(!entries.some(e=>e.isIntersecting))return;
     sceneLoader.disconnect();
-    import('./protocol-scene.js?v=20261027-calm1').then(module=>module.mountProtocolScene(diagram)).catch(()=>{diagram.querySelector('.diagram-caption').textContent='Static reference view';});
+    import('./protocol-scene.js?v=20261030-load1').then(module=>module.mountProtocolScene(diagram)).catch(()=>{diagram.querySelector('.diagram-caption').textContent='Static reference view';});
   },{rootMargin:'300px'});sceneLoader.observe(diagram);
   observeMedia(panel);
 }
@@ -63,8 +65,8 @@ export async function setupDatasetInspector({reducedMotion}) {
   const names={context:'Context',interaction:'Interaction',wrist:manifest.cameras.wrist.view_label||'Wrist'};
   const grid=document.querySelector('#camera-grid'),play=document.querySelector('#dataset-play'),seek=document.querySelector('#dataset-seek');
   const contact=document.querySelector('#dataset-contact'),time=document.querySelector('#dataset-time');
-  let loaded=false,loading=false,visible=false,playing=false,userPaused=reducedMotion,raf=0,lastSample=-1;
-  const urls=[];const duration=manifest.duration_seconds;
+  let loaded=false,loading=false,near=false,visible=false,playing=false,stalled=false,userPaused=reducedMotion,raf=0,lastSample=-1;
+  const duration=manifest.duration_seconds;
   root.querySelector('.console-heading h3').textContent=manifest.title||'Synchronized observations';
   root.querySelector('.recording-tag').textContent=manifest.rerendered?'HD replay':'Original recording';
   document.querySelector('#dataset-note').textContent=manifest.rerendered?`HD views are re-rendered for display; dataset images are 224 × 224. Video ${manifest.fps} Hz, touch ${manifest.signal_sample_hz} Hz.`:`Video ${manifest.fps} Hz, touch ${manifest.signal_sample_hz} Hz.`;
@@ -108,13 +110,16 @@ export async function setupDatasetInspector({reducedMotion}) {
   }
   function loop(){
     raf=0;if(!playing)return;
-    for(const video of videos.slice(1))if(!video.seeking&&Math.abs(video.currentTime-master.currentTime)>.06)video.currentTime=master.currentTime;
+    // Views stream in, so if one runs short of data the others wait for it and all resume together.
+    const starving=videos.some(v=>!v.ended&&!v.seeking&&v.readyState<3);
+    if(starving!==stalled){stalled=starving;videos.forEach(v=>{if(starving)v.pause();else v.play().catch(()=>{});});}
+    if(!stalled)for(const video of videos.slice(1))if(!video.seeking&&Math.abs(video.currentTime-master.currentTime)>.06)video.currentTime=master.currentTime;
     updateReadout();if(master.ended){setPlaying(false);return;}raf=requestAnimationFrame(loop);
   }
   async function setPlaying(value){
     if(!loaded)return;
     playing=value;play.textContent=value?'Ⅱ':'▶';play.setAttribute('aria-label',value?'Pause synchronized observations':'Play synchronized observations');
-    if(raf)cancelAnimationFrame(raf);
+    if(raf)cancelAnimationFrame(raf);stalled=false;
     if(value){
       if(master.ended||master.currentTime>=duration-.06)videos.forEach(v=>v.currentTime=0);
       try{await Promise.all(videos.map(v=>v.play()));if(!playing){videos.forEach(v=>v.pause());return;}raf=requestAnimationFrame(loop);}catch{playing=false;videos.forEach(v=>v.pause());play.textContent='▶';play.setAttribute('aria-label','Play synchronized observations');}
@@ -127,11 +132,8 @@ export async function setupDatasetInspector({reducedMotion}) {
   async function load(){
     if(loading||loaded)return;loading=true;play.textContent='…';
     try{
-      await Promise.all(videos.map(async(video,i)=>{
-        const response=await fetch(`${manifest.cameras[cameras[i]].video}?episode=${encodeURIComponent(manifest.episode_id)}`);if(!response.ok)throw new Error('Camera recording unavailable');
-        const url=URL.createObjectURL(await response.blob());urls.push(url);
-        await new Promise((resolve,reject)=>{video.addEventListener('loadeddata',resolve,{once:true});video.addEventListener('error',reject,{once:true});video.src=url;video.load();});
-      }));
+      videos.forEach((video,i)=>{video.preload='auto';video.src=`${manifest.cameras[cameras[i]].video}?episode=${encodeURIComponent(manifest.episode_id)}`;});
+      await whenPlayable(videos,()=>near&&!document.hidden);
       loaded=true;root.dataset.inspectorReady='true';play.disabled=false;seek.disabled=false;contact.disabled=false;play.textContent='▶';
       videos.forEach(v=>v.addEventListener('seeked',updateReadout));
       if(visible&&!userPaused&&!document.hidden)setPlaying(true);
@@ -141,9 +143,9 @@ export async function setupDatasetInspector({reducedMotion}) {
   play.addEventListener('click',()=>{userPaused=playing;setPlaying(!playing);});
   seek.addEventListener('input',()=>{const nextTime=Number(seek.value)/1000*duration;userPaused=true;setPlaying(false);seekTo(nextTime);});
   contact?.addEventListener('click',()=>{userPaused=true;setPlaying(false);const peaks=signals.force_n.map(values=>Math.max(...values));const index=peaks.indexOf(Math.max(...peaks));seekTo(signals.time_seconds[index]+.002);});
-  new IntersectionObserver(entries=>{if(entries[0].isIntersecting)load();},{rootMargin:'400px'}).observe(root);
+  new IntersectionObserver(entries=>{near=entries[0].isIntersecting;if(near)load();},{rootMargin:'400px'}).observe(root);
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){load();if(loaded&&!userPaused&&!document.hidden)setPlaying(true);}else setPlaying(false);},{threshold:.15}).observe(root);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)setPlaying(false);});
-  addEventListener('pagehide',event=>{if(!event.persisted){setPlaying(false);urls.forEach(URL.revokeObjectURL);}});
+  addEventListener('pagehide',()=>setPlaying(false));
   updateReadout();
 }

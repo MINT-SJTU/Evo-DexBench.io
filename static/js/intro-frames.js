@@ -123,8 +123,8 @@ export function setupScrollIntro({reducedMotion,media}){
     if(preview.at(-1)!==last)preview.push(last);
     const order=[...preview,...Array.from({length:count},(_,i)=>i).filter(i=>!preview.includes(i))];
     try{
-      // Four downloads at a time; compressed frames are cheap, decoded ones are bounded.
-      await Promise.all(Array.from({length:4},async()=>{
+      // Eight downloads at a time: each frame is small, so request latency, not bandwidth, sets the pace.
+      await Promise.all(Array.from({length:8},async()=>{
         while(cursor<count){
           const index=order[cursor++],response=await fetch(`${folder}/${String(index).padStart(3,'0')}.webp`,{signal:controller.signal});
           if(!response.ok)throw new Error('Intro frame unavailable');

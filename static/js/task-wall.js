@@ -1,4 +1,4 @@
-import {observeMedia} from './media-loading.js?v=20261018-perf2';
+import {observeMedia} from './media-loading.js?v=20261030-load1';
 /** @typedef {{id:string,name:string,role:string}} Task */
 /** @param {{families:Array<{title:string,tasks:Task[]}>,reducedMotion:boolean}} options */
 export async function setupTaskWall({families,reducedMotion}){

@@ -1,5 +1,6 @@
 /** Presentation layer: scroll reveals, the highlights carousel and the FAQ toggle.
  * Independent of app.js, so the page content still works if this module fails. */
+import {whenPlayable} from './media-loading.js?v=20261030-load1';
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /** Fade headings up as they enter. Content stays visible without JS or with reduced motion. */
@@ -32,7 +33,9 @@ function setupHighlights(){
   const mod=(n,m)=>((n%m)+m)%m;
 
   const showPoster=video=>{if(video?.dataset.poster){video.poster=video.dataset.poster;delete video.dataset.poster;}};
-  const load=video=>{showPoster(video);if(video.dataset.src){video.src=video.dataset.src;delete video.dataset.src;}};
+  const ready=new Map();
+  // A clip keeps its poster until it can play to the end without stalling.
+  const load=video=>{showPoster(video);if(video.dataset.src){video.preload='auto';video.src=video.dataset.src;delete video.dataset.src;ready.set(video,whenPlayable([video],()=>video===videos[centre]&&playing&&visible&&!document.hidden));}return ready.get(video)||Promise.resolve();};
 
   function place(){
     cards.forEach((card,k)=>{
@@ -61,8 +64,10 @@ function setupHighlights(){
     });
     const video=videos[centre];
     if(playing&&visible){
-      load(video);
-      video.play().then(()=>{if(!frame)frame=requestAnimationFrame(progress);}).catch(()=>{});
+      load(video).then(()=>{
+        if(video!==videos[centre]||!playing||!visible||document.hidden)return;
+        video.play().then(()=>{if(!frame)frame=requestAnimationFrame(progress);}).catch(()=>{});
+      },()=>{});
     }else video.pause();
   }
   /** Move by the shortest way round to the chosen card. */

@@ -1,4 +1,4 @@
-import { loadRecordedFaucet } from './recorded-faucet.js?v=20261016-studio1';
+import { loadRecordedFaucet } from './recorded-faucet.js?v=20261030-load1';
 import { PROTOCOL, cameraExample } from './protocol-parameters.js?v=20261027-calm1';
 import * as T from './vendor/three.module.js';
 import { createCameraHousing } from './camera-model.js?v=20261014-publication1';
@@ -53,7 +53,7 @@ export async function mountProtocolScene(root){
   const stage=root.closest('.protocol-stage');
   const renderer=new T.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});
   renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
-  renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFShadowMap;
+  renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFShadowMap;renderer.shadowMap.autoUpdate=false;
   renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
   renderer.domElement.setAttribute('role','img');renderer.domElement.setAttribute('aria-label','Interactive 3D schematic of dexterous manipulation under five evaluation conditions');
   const scene=new T.Scene();scene.background=new T.Color(0xe1e2e0);scene.fog=new T.Fog(0xe1e2e0,18,38);
@@ -79,7 +79,7 @@ export async function mountProtocolScene(root){
   /** @param {T.Object3D} group @param {number} amount */
   const fade=(group,amount)=>{group.visible=amount>.01;if(group.visible)group.traverse(o=>{const m=o.material;if(m&&m.userData.opacity!==undefined)m.opacity=m.userData.opacity*Math.min(1,amount);});};
   const ground=mesh(new T.PlaneGeometry(200,200),material(0xd5d7d4,.05,.78));ground.rotation.x=-Math.PI/2;ground.position.y=-.045;ground.receiveShadow=true;ground.castShadow=false;
-  const actual=await loadRecordedFaucet();
+  const [actual,housing]=await Promise.all([loadRecordedFaucet(),createCameraHousing()]);
   const robot={group:actual.robot};scene.add(robot.group);scene.add(actual.fixture);
   const faucet={group:actual.fixture,handle:actual.handle};
   const target=new T.Object3D();target.position.copy(actual.jointPivot);scene.add(target);
@@ -88,7 +88,7 @@ export async function mountProtocolScene(root){
   const pedestalHalf={x:.31,z:.28},pedestalY=basePosition.y/2-.04;
   const pedestal=box(pedestalHalf.x*2,basePosition.y,pedestalHalf.z*2,ivory);pedestal.position.set(basePosition.x,pedestalY,basePosition.z);
   const nominalEye=target.position.clone().add(V(1.0,1.25,1.3)),nominalTarget=target.position.clone();
-  const {rig:cameraRig}=await createCameraHousing();cameraRig.scale.multiplyScalar(.6);scene.add(cameraRig);
+  const {rig:cameraRig}=housing;cameraRig.scale.multiplyScalar(.6);scene.add(cameraRig);
   const coneGeometry=new T.BufferGeometry();coneGeometry.setAttribute('position',new T.BufferAttribute(new Float32Array(48),3));
   const sightLines=new T.LineSegments(coneGeometry,new T.LineBasicMaterial({color:0x7a948d,transparent:true,opacity:.42}));scene.add(sightLines);
   const nominalSight=sightLines.clone();nominalSight.geometry=coneGeometry.clone();nominalSight.material=new T.LineDashedMaterial({color:0xb58975,transparent:true,opacity:.55,dashSize:.045,gapSize:.025});nominalSight.visible=false;scene.add(nominalSight);
@@ -163,6 +163,8 @@ export async function mountProtocolScene(root){
 
   const canvasWrap=document.createElement('div');canvasWrap.className='protocol-webgl';canvasWrap.append(renderer.domElement);
   canvasWrap.insertAdjacentHTML('beforeend','<div class="scene-observation"><span>CAMERA VIEW</span></div><div class="scene-hud" aria-hidden="true"></div><button class="scene-replay" type="button" aria-label="Replay this condition" title="Replay">↻</button>');
+  // Compile shaders in the background so the first frame does not freeze scrolling.
+  await renderer.compileAsync(scene,camera).catch(()=>{});
   root.replaceChildren(canvasWrap);
   // Keep the visual panel clear; the parameter readout belongs with its explanation.
   stage.querySelector('.protocol-copy').insertAdjacentHTML('beforeend','<div class="scene-info"><span class="scene-state"></span><span class="scene-annotation"></span></div>');
@@ -253,10 +255,11 @@ export async function mountProtocolScene(root){
     for(const [color,base] of [[ambient.color,0xf4f5ef],[ambient.groundColor,0x777465],[warm.color,0xfff1d6],[rim.color,0xc9d9e5]]){color.set(base);color.r*=Math.exp(.04*values.light);color.b*=Math.exp(-.04*values.light);}
     const warmth=PROTOCOL.lighting.example.colorShift*values.light;
     sun.scale.setScalar(.6*(1+(PROTOCOL.lighting.example.direct-1)*1.5*values.light));sunMaterial.color.setRGB(1,1-1.5*warmth,1-3*warmth);
-    renderer.setScissorTest(false);renderer.setViewport(0,0,width,height);renderer.render(scene,camera);
+    // One shadow pass per frame; the inset redraws it only when hiding the camera rig changes the casters.
+    renderer.shadowMap.needsUpdate=true;renderer.setScissorTest(false);renderer.setViewport(0,0,width,height);renderer.render(scene,camera);
     const w=Math.round(width*.28),h=Math.round(w*9/16),x=width-w-16,y=18;
     renderer.setScissorTest(true);renderer.setScissor(x,y,w,h);renderer.setViewport(x,y,w,h);
-    const hidden=[cameraRig,nominalSight,frustum,sightLines,cameraGizmo,lightGizmo].map(o=>[o,o.visible]);hidden.forEach(([o])=>{o.visible=false;});
+    const hidden=[cameraRig,nominalSight,frustum,sightLines,cameraGizmo,lightGizmo].map(o=>[o,o.visible]);renderer.shadowMap.needsUpdate=cameraRig.visible;hidden.forEach(([o])=>{o.visible=false;});
     if(condition===3){
       detailCamera.position.copy(target.position).add(V(-.8,.45,.8));detailCamera.lookAt(target.position);detailCamera.aspect=w/h;detailCamera.updateProjectionMatrix();
       renderer.render(scene,detailCamera);

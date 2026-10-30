@@ -16,13 +16,13 @@ function prepareSectionNavigation(){
   };
 }
 const finishInitialNavigation=prepareSectionNavigation();
-import {observeMedia,whenNear} from './media-loading.js?v=20261018-perf2';
+import {observeMedia,whenNear} from './media-loading.js?v=20261030-load1';
 observeMedia();
-import { setupTaskWall } from './task-wall.js?v=20261018-perf2';
+import { setupTaskWall } from './task-wall.js?v=20261030-load1';
 import { setupNavigation } from './navigation.js?v=20261016-results1';
 setupNavigation();
 import { setupModelComparison, MODELS, modelLabel } from './model-comparison.js?v=20261027-calm1';
-import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261027-calm2';
+import { setupCoreComparison, setupDatasetInspector, setupEvaluation } from './chapters.js?v=20261030-load1';
 import { renderTransferHeatmap } from './transfer-heatmap.js?v=20261027-calm1';
 import { renderEvidenceChart } from './evidence-chart.js?v=20261027-calm1';
 let data, hdMedia = {}, hoverMedia = {}, layoutMedia = {}, currentFamily = 0, currentTask = 0, currentLayout = 0;

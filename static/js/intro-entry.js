@@ -1,4 +1,4 @@
-import {setupScrollIntro} from './intro-frames.js?v=20261027-card1';
+import {setupScrollIntro} from './intro-frames.js?v=20261030-load1';
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 fetch('static/videos/hero.json?v=20261018-frames1',{cache:'no-cache'}).then(response=>{
   if(!response.ok)throw new Error('Intro metadata unavailable');return response.json();
